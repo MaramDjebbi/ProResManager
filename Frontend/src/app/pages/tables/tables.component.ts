@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { affectation } from 'src/models/affectation';
 import { AffectationService } from 'src/app/service/affectationService';
 import { Router } from '@angular/router';
-
-
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
