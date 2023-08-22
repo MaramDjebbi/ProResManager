@@ -11,6 +11,7 @@
       <div class="card shadow">
         <div class="card-header border-0 d-flex justify-content-between align-items-center">
           <h3 class="text-uppercase mb-0">Table Affectations</h3>
+          <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search">
           <button class="button-28" (click)="exportToCSV()">Export</button>
           <button class="button-62" (click)="navigateToTarget()" >Ajouter</button>
         </div>
@@ -18,15 +19,15 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th scope="col">idAffectation</th>
-                <th scope="col">Manager</th>
-                <th scope="col">departement</th>
-                <th scope="col">country</th>
-                <th scope="col">region</th>
-                <th scope="col">Ressource</th>
-                <th scope="col">projet</th>
-                <th scope="col">naturedaffectations</th>
-                <th scope="col">statuDaffectations</th>
+                <th scope="col">idAffectation  </th>
+                <th scope="col">Manager   </th>
+                <th scope="col">departement   </th>
+                <th scope="col">departement   </th>
+                <th scope="col">region   </th>
+                <th scope="col">Ressource   </th>
+                <th scope="col">projet   </th>
+                <th scope="col">naturedaffectations   </th>
+                <th scope="col">statuDaffectations   </th>
                 <th scope="col">moisA</th>
                 <th scope="col">moisB</th>
                 <th scope="col">moisC</th>
@@ -35,7 +36,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let affectation of affectations">
+              <tr *ngFor="let affectation of affectations | filter: searchText : ['nomManager', 'departement', 'country', 'region', 'nomRessource', 'projet', 'natureAff', 'statutAff']">
                 <td>{{affectation.idAffectation}}</td>
                 <td *ngIf="affectation.nomManager && affectation.prenomManager">
                   {{ affectation.nomManager + ' ' + affectation.prenomManager }}

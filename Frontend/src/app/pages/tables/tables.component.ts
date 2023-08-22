@@ -2,15 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { affectation } from 'src/models/affectation';
 import { AffectationService } from 'src/app/service/affectationService';
 import { Router } from '@angular/router';
+import { FilterPipe } from 'src/app/filter.pipe';
+
+
+
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
-  styleUrls: ['./tables.component.scss']
+  styleUrls: ['./tables.component.scss'],
 })
 
 
 export class TablesComponent implements OnInit {
 
+  searchText = '';
 
   affectations: affectation[] = [];
   
@@ -114,7 +119,7 @@ export class TablesComponent implements OnInit {
     });
   
     const csvContent = this.generateCSVContent(modifiedDataWithOrderedColumns);
-    
+
     const blob = new Blob([csvContent], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -129,4 +134,6 @@ export class TablesComponent implements OnInit {
     const rows = data.map(item => Object.values(item).join(','));
     return `${header}\n${rows.join('\n')}`;
   }
+
+ 
 }

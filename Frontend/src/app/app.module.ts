@@ -18,7 +18,8 @@ import { AjouterAffectationComponent } from './pages/ajouter-affectation/ajouter
 import { MessageComponent } from './pages/message/message.component';
 import { EditAffectationComponent } from './pages/edit-affectation/edit-affectation.component';
 import { CommonModule } from '@angular/common';
-import { ToastrModule } from 'ngx-toastr'; // Correct import path
+import { ToastrModule } from 'ngx-toastr';
+import { FilterPipe } from './filter.pipe'; // Correct import path
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { ToastrModule } from 'ngx-toastr'; // Correct import path
     AjouterAffectationComponent,
     MessageComponent,
     EditAffectationComponent,
+    FilterPipe,
   ],
   providers: [],
   bootstrap: [AppComponent],

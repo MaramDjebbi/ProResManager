@@ -20,8 +20,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'addproject',     component: AjouterProjetComponent },
     { path: 'addaffectation', component: AjouterAffectationComponent },
     { path: 'editprojet/:idprojet', component: EditProjetComponent },
-
     { path: 'editressource/:idRessource', component: EditRessourceComponent },
-  
     { path: 'editaffectation/:idAffectation', component: EditAffectationComponent },
 ];
