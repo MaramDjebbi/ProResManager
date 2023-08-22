@@ -12,9 +12,7 @@ import { Router } from '@angular/router';
 export class TablesComponent implements OnInit {
 
 
-
   affectations: affectation[] = [];
-
   
 
   constructor(private affectationService : AffectationService  ,private router: Router){}
@@ -23,10 +21,6 @@ export class TablesComponent implements OnInit {
   ngOnInit() {
     this.fetchProjects();
   }
-
-  
-
-
 
   fetchProjects(): void {
     this.affectationService.getAllAffectations().subscribe(
@@ -39,8 +33,6 @@ export class TablesComponent implements OnInit {
       }
     );
   }
-
-
 
   navigateToTarget() {
     console.log("test ajout affectation");
@@ -65,4 +57,76 @@ export class TablesComponent implements OnInit {
       );
   }  
 
+  exportToCSV(): void {
+    const excludedAttributes = ['project','user','resssource']; // List of attributes to exclude
+
+    const filteredData = this.affectations.map(item => {
+      const filteredItem = { ...item };
+      excludedAttributes.forEach(attr => delete filteredItem[attr]);
+      return filteredItem;
+    });
+
+    const modifiedData = filteredData.map(item => {
+      const modifiedItem = { ...item };
+  
+      // Combine nomManager and prenomManager into Manager
+      modifiedItem['Manager'] = `${item.nomManager} ${item.prenomManager}`;
+  
+      // Combine nomRessource and prenomRessource into Ressource
+      modifiedItem['Ressource'] = `${item.nomRessource} ${item.prenomRessource}`;
+  
+      // Exclude unwanted fields
+      delete modifiedItem['nomManager'];
+      delete modifiedItem['prenomManager'];
+      delete modifiedItem['nomRessource'];
+      delete modifiedItem['prenomRessource'];
+      delete modifiedItem['project'];
+      delete modifiedItem['user'];
+      delete modifiedItem['resssource'];
+  
+      return modifiedItem;
+    });
+  
+    const columnOrder = [
+      'idAffectation',
+      'Manager',
+      'departement',
+      'Ressource',
+      'projet',
+      'country',
+      'region',
+      'natureAff',
+      'statutAff',
+      'moisA',
+      'moisB',
+      'moisC',
+      'sommeParProjet'
+    ];
+  
+    const modifiedDataWithOrderedColumns = modifiedData.map(item => {
+      const orderedItem = {};
+  
+      columnOrder.forEach(key => {
+        orderedItem[key] = item[key];
+      });
+  
+      return orderedItem;
+    });
+  
+    const csvContent = this.generateCSVContent(modifiedDataWithOrderedColumns);
+    
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'table-affectations.csv';
+    link.click();
+    window.URL.revokeObjectURL(url);
+  }
+
+  generateCSVContent(data: any[]): string {
+    const header = Object.keys(data[0]).join(',');
+    const rows = data.map(item => Object.values(item).join(','));
+    return `${header}\n${rows.join('\n')}`;
+  }
 }

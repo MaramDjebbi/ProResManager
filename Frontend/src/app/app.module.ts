@@ -19,7 +19,6 @@ import { MessageComponent } from './pages/message/message.component';
 import { EditAffectationComponent } from './pages/edit-affectation/edit-affectation.component';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr'; // Correct import path
-import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -32,7 +31,6 @@ import { DataTablesModule } from 'angular-datatables';
     RouterModule,
     ToastrModule.forRoot(),
     AppRoutingModule,
-    DataTablesModule.forRoot(),
     ],
   declarations: [
     AppComponent,

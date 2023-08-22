@@ -13,8 +13,6 @@ import { EditAffectationComponent } from './pages/edit-affectation/edit-affectat
 
 const routes: Routes = [
 
- 
-
   {
     path: '', redirectTo: 'login', pathMatch: 'full',
   },
