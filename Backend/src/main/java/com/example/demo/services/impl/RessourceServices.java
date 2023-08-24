@@ -34,7 +34,7 @@ public class RessourceServices implements IRessource{
     @Override
     public Integer removeRessouce(Long idRessources, Long idUser) {
         User currentUser = userRepository.findById(idUser).orElse(null);
-        if(currentUser.getRoleUser() == RoleUser.admin){
+        if(currentUser.getRole().getRoleName() == "admin"){
             ressourceRepository.deleteById(idRessources);
         return 1;
         }

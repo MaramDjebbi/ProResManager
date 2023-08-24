@@ -31,12 +31,18 @@ public class SessionService implements ISession{
 
     @Override
     @Transactional
-    public Session addSession(Session S, Long idUser)  throws MessagingException {
-        User user = userRepository.findById(idUser).orElse(null);
-        S.setUser(user);
-        return sessionRepository.save(S);
+    public Integer addSession(Session S, Long idUser)  {
+        User currentUser = userRepository.findById(idUser).orElse(null);
+        if(currentUser.getRole().getRoleName() == "admin"){
+            S.setUser(currentUser);
+            sessionRepository.save(S);
+            return 1;
+        }
+        else
+            return 0;
     }
-/*
+
+    /*
     public static void main(String[] args) {
         SpringApplication.run(SessionService.class, args);
     }

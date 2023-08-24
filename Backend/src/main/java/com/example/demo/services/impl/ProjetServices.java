@@ -58,7 +58,7 @@ public class ProjetServices implements IProjet {
     @Override
     public Integer removeProjet(Long idprojet, Long idUser){
         User currentUser = userRepository.findById(idUser).orElse(null);
-        if(currentUser.getRoleUser() == RoleUser.admin) {
+        if(currentUser.getRole().getRoleName() == "admin" ) {
             projetRepository.deleteById(idprojet);
             return 1;
         }
