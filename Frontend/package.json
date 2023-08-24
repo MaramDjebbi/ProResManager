@@ -46,6 +46,7 @@
     "@angular/language-service": "16.1.4",
     "@types/jasmine": "~4.0.0",
     "@types/jasminewd2": "~2.0.10",
+    "@types/jest": "^29.5.4",
     "@types/jquery": "^3.5.9",
     "@types/node": "^20.5.0",
     "codelyzer": "6.0.2",

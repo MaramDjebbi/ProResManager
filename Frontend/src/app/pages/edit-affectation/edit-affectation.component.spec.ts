@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { EditAffectationComponent } from './edit-affectation.component';
-
+ 
 describe('EditAffectationComponent', () => {
   let component: EditAffectationComponent;
   let fixture: ComponentFixture<EditAffectationComponent>;

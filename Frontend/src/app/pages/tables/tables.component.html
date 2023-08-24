@@ -11,7 +11,12 @@
       <div class="card shadow">
         <div class="card-header border-0 d-flex justify-content-between align-items-center">
           <h3 class="text-uppercase mb-0">Table Affectations</h3>
-          <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search">
+          <div class="input-group input-group-alternative custom-input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-search"></i></span>
+            </div>
+            <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search">
+          </div>
           <button class="button-28" (click)="exportToCSV()">Export</button>
           <button class="button-62" (click)="navigateToTarget()" >Ajouter</button>
         </div>

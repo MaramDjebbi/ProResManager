@@ -10,6 +10,7 @@ import { EditProjetComponent } from './pages/edit-projet/edit-projet.component';
 import { EditRessourceComponent } from './pages/edit-ressource/edit-ressource.component';
 import { AjouterAffectationComponent } from './pages/ajouter-affectation/ajouter-affectation.component';
 import { EditAffectationComponent } from './pages/edit-affectation/edit-affectation.component';
+import { SessionComponent } from './pages/session/session.component';
 
 const routes: Routes = [
 
@@ -40,6 +41,7 @@ const routes: Routes = [
   },
   
   { path: 'addproject', component: AjouterProjetComponent },
+  { path: 'session', component: SessionComponent },
 
   { path: 'addresource', component: AjouteRessourceComponent },
 

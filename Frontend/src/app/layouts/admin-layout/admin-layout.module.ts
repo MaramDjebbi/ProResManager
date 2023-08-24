@@ -9,7 +9,7 @@ import { ProjetComponent } from '../../pages/projet/projet.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RessourceComponent } from 'src/app/pages/ressource/ressource.component';
-
+import { SessionComponent } from 'src/app/pages/session/session.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -23,7 +23,7 @@ import { RessourceComponent } from 'src/app/pages/ressource/ressource.component'
     UserProfileComponent,
     ProjetComponent,
     RessourceComponent,
- 
+    SessionComponent
   ]
 })
 

@@ -9,6 +9,7 @@ import { AjouterProjetComponent } from 'src/app/pages/ajouter-projet/ajouter-pro
 import { EditAffectationComponent } from 'src/app/pages/edit-affectation/edit-affectation.component';
 import { EditProjetComponent } from 'src/app/pages/edit-projet/edit-projet.component';
 import { EditRessourceComponent } from 'src/app/pages/edit-ressource/edit-ressource.component';
+import { SessionComponent } from 'src/app/pages/session/session.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -22,4 +23,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'editprojet/:idprojet', component: EditProjetComponent },
     { path: 'editressource/:idRessource', component: EditRessourceComponent },
     { path: 'editaffectation/:idAffectation', component: EditAffectationComponent },
+    { path: 'session', component: SessionComponent }
 ];
