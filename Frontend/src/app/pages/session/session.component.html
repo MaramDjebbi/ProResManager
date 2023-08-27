@@ -24,11 +24,11 @@
                           <div class="col-lg-6">
                               <div class="form-group">
                                   <label class="form-control-label text-dark" for="dateDebutSession">Date Début</label>
-                                  <input type="date" id="dateDebutSession" class="form-control form-control-alternatives"  [(ngModel)]="activeSession.dateDebutSession">
+                                  <p type="date" id="dateDebutSession" class="form-control form-control-alternatives">{{ activeSession.dateDebutSession }}</p>
                               </div>
                               <div class="form-group">
                                   <label class="form-control-label text-dark" for="dateFinSession">Date Fin</label>
-                                  <input type="date" id="dateFinSession" class="form-control form-control-alternatives"  [(ngModel)]="activeSession.dateFinSession">
+                                  <p type="date" id="dateFinSession" class="form-control form-control-alternatives">{{ activeSession.dateFinSession }}</p>
                               </div>
                           </div>
                       </div>
@@ -39,9 +39,9 @@
               <form >
                 <label class="form-control-label text-dark" for="jourstravail">Jours de Travail par Mois</label>
                 <div class="my-form">
-                <input type="text" id="moisA" class="form-control form-control-alternatives" [(ngModel)]="activeSession.moisA">
-                <input type="text" id="moisB" class="form-control form-control-alternatives" [(ngModel)]="activeSession.moisB">
-                <input type="text" id="moisC" class="form-control form-control-alternatives" [(ngModel)]="activeSession.moisC">
+                  <p type="text" id="moisA" class="form-control form-control-alternatives">{{ activeSession.moisA }} : {{ activeSession.joursTravailMoisA }} Jours</p>
+                  <p type="text" id="moisB" class="form-control form-control-alternatives">{{ activeSession.moisB }} : {{ activeSession.joursTravailMoisb }} Jours</p>
+                  <p type="text" id="moisC" class="form-control form-control-alternatives">{{ activeSession.moisC }} : {{ activeSession.joursTravailMoisC }} Jours</p>
               </div>
               </form>
             </div>

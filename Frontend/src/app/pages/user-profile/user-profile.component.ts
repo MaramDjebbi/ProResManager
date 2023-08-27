@@ -19,7 +19,7 @@ export class UserProfileComponent implements OnInit {
     this.userFirstName=this.userAuthService.getFirstName();
     this.userLastName=this.userAuthService.getLastName();
     this.userEmail=this.userAuthService.getEmail();
-      //this.userName=this.userAuthService.getEmail();
+    this.userName=this.userAuthService.getEmail();
     console.log(this.userFirstName , this.userLastName , this.userEmail ,  this.userName);
 
   }

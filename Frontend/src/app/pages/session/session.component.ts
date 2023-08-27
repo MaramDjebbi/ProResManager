@@ -21,16 +21,19 @@ export class SessionComponent {
 
   ngOnInit() {
     this.fetchActiveSession();
-    console.log(this.activeSession);
+    //console.log(this.activeSession);
   }
 
   fetchActiveSession(): void {
     this.sessionService.getActiveSession().subscribe(
-      (activeSession: session) => {
+      (activeSession: any) => {
+        activeSession.dateDebutSession = new Date(activeSession.dateDebutSession).toISOString().split('T')[0];
+        activeSession.dateFinSession = new Date(activeSession.dateFinSession).toISOString().split('T')[0];
+        console.log(activeSession);
         this.activeSession = activeSession; 
       },
       (error) => {
-        console.error('Error fetching projects:', error);
+        console.error('Error fetching active session:', error);
       }
     );
   }
