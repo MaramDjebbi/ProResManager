@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
+import { RessourceService } from 'src/app/service/ressourceService';
 
 
 @Component({
@@ -12,15 +11,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 
 
-
 export class AjouteRessourceComponent  {
 
   newRessource: any = {};
 
-  constructor(private httpClient: HttpClient,  private router: Router, private toastr: ToastrService) {}
+  constructor(private router: Router, private toastr: ToastrService, private ressourceService: RessourceService) {}
 
+
+  
   onSubmit() {
-    this.httpClient.post('http://localhost:8082/Ressource/addressource/1', this.newRessource)
+    this.ressourceService.addRessourcewithIdUser(this.newRessource)
     .subscribe(
         (response: any) => {
           this.newRessource = {};
@@ -34,10 +34,6 @@ export class AjouteRessourceComponent  {
         }
       );
   }
-
-
-  
-
    
   
 }

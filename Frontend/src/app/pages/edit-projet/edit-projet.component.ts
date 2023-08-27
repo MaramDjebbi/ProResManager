@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProjetService } from 'src/app/service/projetService';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class EditProjetComponent implements OnInit {
 
   projectToEdit: any = {};
 
-  constructor(private route: ActivatedRoute, private projetService: ProjetService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private projetService: ProjetService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -25,7 +26,6 @@ export class EditProjetComponent implements OnInit {
         this.projectToEdit = projectData;
       });
     });
-
   }
 
   onSubmit() {
@@ -33,9 +33,13 @@ export class EditProjetComponent implements OnInit {
       updatedProject => {
         console.log('Project updated:', updatedProject);
         this.router.navigate(['projet'])
+        const messageFromApi = "Project updated successfully ";
+        this.toastr.success(messageFromApi);
       },
-      error => {
+      (error: any) => {
         console.error('Error updating project:', error);
+        const messageFromApi = error.error.message;
+        this.toastr.error(messageFromApi);
       }
     );
   }

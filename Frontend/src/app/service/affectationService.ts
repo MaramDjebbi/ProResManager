@@ -34,11 +34,15 @@ export class AffectationService{
       return this.httpClient.get(url, { headers });
     }
 
+    addAffectationWithIdUser(affectation: affectation){
+      const headers = this.createHeaders();
+      return this.httpClient.post(`${this.API_URL}/affectation/addaffectation/admin123`,affectation, { headers });
+    }
 
-    updateAffectation(projet: affectation, affectationId: number) {
+    updateAffectation(affectation: affectation, affectationId: number) {
       const headers = this.createHeaders();
       const url = `${this.API_URL}/update/${affectationId}`;
-      return this.httpClient.put(url, projet, { headers });
+      return this.httpClient.put(url, affectation, { headers });
     }
 
 

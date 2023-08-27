@@ -3,6 +3,8 @@ import { ProjetService  } from 'src/app/service/projetService';
 import { Projet } from 'src/models/projet';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-projet',
   template: '<button (click)="navigateToTarget()">Ajouter</button>',
@@ -15,7 +17,7 @@ export class ProjetComponent implements OnInit {
 
   projects: Projet[]= [];
 
-  constructor(private projetService : ProjetService  ,private router: Router, private httpClient: HttpClient, ){}
+  constructor(private projetService : ProjetService  ,private router: Router, private httpClient: HttpClient, private toastr: ToastrService ){}
 
 
 
@@ -34,35 +36,27 @@ export class ProjetComponent implements OnInit {
     );
   }
 
-
-
-
   navigateToTarget() {
     console.log("test ajout projet");
     this.router.navigate(['/addproject']);
   }
 
-
-  
   navigateToEdit(projectId: Number){
     this.router.navigate(['/editprojet', projectId]);
   }
 
-
-  
-
-
-
-
   deleteProject(projectId: Number): void {
-    const url = `http://localhost:8082/projet/removeProjet/admin123/${projectId}`;
-    this.httpClient.delete(url)
+    this.projetService.deleteProject(projectId)
       .subscribe(
-        () => {
+        (response: any) => {
           console.log('Project deleted successfully');
           this.fetchProjects();
+          const messageFromApi = response.message;
+          this.toastr.success(messageFromApi);
         },
-        (error) => {
+        (error: any) => {
+          const messageFromApi = error.error.message;
+          this.toastr.error(messageFromApi);
           console.error('Error deleting project', error);
         }
       );

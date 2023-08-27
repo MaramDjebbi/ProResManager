@@ -3,6 +3,7 @@ import { affectation } from 'src/models/affectation';
 import { AffectationService } from 'src/app/service/affectationService';
 import { Router } from '@angular/router';
 import { FilterPipe } from 'src/app/filter.pipe';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -20,7 +21,7 @@ export class TablesComponent implements OnInit {
   affectations: affectation[] = [];
   
 
-  constructor(private affectationService : AffectationService  ,private router: Router){}
+  constructor(private affectationService : AffectationService  ,private router: Router, private toastr: ToastrService,){}
 
   
   ngOnInit() {
@@ -52,11 +53,15 @@ export class TablesComponent implements OnInit {
   deleteAffectation(affectationId: Number) {
     this.affectationService.deleteAffectation(affectationId)
       .subscribe(
-        () => {
+        (response: any) => {
           console.log('Affectation deleted successfully');
-          this.fetchProjects();        
+          this.fetchProjects();      
+          const messageFromApi = response.message;
+          this.toastr.success(messageFromApi);  
         },
-        (error) => {
+        (error: any) => {
+          const messageFromApi = error.error.message;
+          this.toastr.error(messageFromApi);
           console.error('Error deleting affectation', error);
         }
       );

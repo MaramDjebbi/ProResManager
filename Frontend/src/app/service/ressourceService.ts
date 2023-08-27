@@ -30,14 +30,6 @@ export class RessourceService {
     return this.httpClient.get<Ressource[]>(`${this.API_URL}/getallRessources`, { headers });
   }
 
-  /*removeRessouce(Ressource : any) {
-    return this.httpClient.delete(`${this.API_URL}/removeRessource/{{iduser}}/{{idressource}}`, Ressource)
-  }*/
-
-  /*updateRessource(Ressource : any) {
-    return this.httpClient.put(`${this.API_URL}/update/{{idRessource}}`, Ressource)
-  }*/
-
   updateRessource(ressource: Ressource, ressourceId: number) {
     const headers = this.createHeaders();
     const url = `${this.API_URL}/update/${ressourceId}`;
@@ -47,7 +39,7 @@ export class RessourceService {
 
   addRessourcewithIdUser(Ressource : any) {
     const headers = this.createHeaders();
-    return this.httpClient.post(`${this.API_URL}/addressource/{idUser}`, Ressource, { headers })
+    return this.httpClient.post(`${this.API_URL}/addressource/admin123`, Ressource, { headers })
   }
 
  
@@ -57,7 +49,11 @@ export class RessourceService {
     return this.httpClient.get(url, { headers });
   }
 
-  
+  deletRessource(resourceId: Number) {
+    const headers = this.createHeaders();
+    const url = `${this.API_URL}/removeRessource/admin123/${resourceId}`;
+    return this.httpClient.delete(url, { headers });
+  }
 
  
 

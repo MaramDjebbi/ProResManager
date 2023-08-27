@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RessourceService } from 'src/app/service/ressourceService';
 import { Ressource } from 'src/models/ressource';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-resource',
@@ -17,13 +17,11 @@ export class RessourceComponent implements OnInit {
 
   ressources: Ressource[]= [];
 
-  constructor(private RessourceService : RessourceService, private router: Router, private httpClient: HttpClient ){}
+  constructor(private RessourceService : RessourceService, private router: Router, private toastr: ToastrService ){}
 
   ngOnInit(): void {
     this.fetchRessources();
   }
-
-
   
   fetchRessources(): void {
     this.RessourceService.getAllRessources().subscribe(
@@ -36,7 +34,6 @@ export class RessourceComponent implements OnInit {
     );
   }
 
-
   navigateToTarget() {
     console.log("test ajout ressoure");
     this.router.navigate(['/addresource']);
@@ -47,17 +44,19 @@ export class RessourceComponent implements OnInit {
     this.router.navigate(['/editressource', ressourceId]);
   }
 
-
   
   deleteRessource(resourceId: Number): void {
-    const url = `http://localhost:8082/Ressource/removeRessource/1/${resourceId}`;
-    this.httpClient.delete(url)
+    this.RessourceService.deletRessource(resourceId)
       .subscribe(
-        () => {
+        (response: any) => {
           console.log('Ressource deleted successfully');
           this.fetchRessources();
+          const messageFromApi = response.message;
+          this.toastr.success(messageFromApi);
         },
-        (error) => {
+        (error: any) => {
+          const messageFromApi = error.error.message;
+          this.toastr.error(messageFromApi);
           console.error('Error deleting Ressource', error);
         }
       );

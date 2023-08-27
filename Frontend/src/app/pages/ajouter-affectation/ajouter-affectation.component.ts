@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { natureAffectationService } from '../../service/natureAffectationService';
 import { statutAffectationService } from '../../service/statutAffectationService';
-import { natureAffectation } from 'src/models/natureAffectation';
-import { statutAffectation } from 'src/models/statutAffectation';
 import { ToastrService } from 'ngx-toastr';
-
+import { AffectationService } from 'src/app/service/affectationService';
 
 @Component({
   selector: 'app-ajouter-affectation',
@@ -23,7 +20,7 @@ export class AjouterAffectationComponent  implements OnInit {
   natureAffectations: any[] = []; 
 
 
-  constructor(private httpClient: HttpClient, private router: Router, private natureAffectationService: natureAffectationService, private statutAffectationService: statutAffectationService,  private toastr: ToastrService) { }
+  constructor(private router: Router, private natureAffectationService: natureAffectationService, private statutAffectationService: statutAffectationService,  private toastr: ToastrService, private affectationService : AffectationService) { }
 
   
 
@@ -33,7 +30,7 @@ export class AjouterAffectationComponent  implements OnInit {
   }
 
   onSubmit() {
-    this.httpClient.post('http://localhost:8082/affectation/addaffectation/1', this.newAffectation)
+    this.affectationService.addAffectationWithIdUser(this.newAffectation)
     .subscribe(
         (response: any) => {
           this.newAffectation = {}; 

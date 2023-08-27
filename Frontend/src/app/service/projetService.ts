@@ -28,14 +28,6 @@ export class ProjetService  {
     return this.httpClient.get<Projet[]>(`${this.API_URL}/GetallProject`, { headers });
   }
 
-  /*removeProjet(Projet : any) {
-    return this.httpClient.delete(`${this.API_URL}/removeProjet/1/{idprojet}`, Projet)
-  }*/
-
-  /*updateProjet(Projet : any) {
-    return this.httpClient.put(`${this.API_URL}/updates/{idprojet}`, Projet)
-  }*/
-
   updateProjet(projet: Projet, projectId: number) {
     const headers = this.createHeaders();
     const url = `${this.API_URL}/updates/${projectId}`;
@@ -44,13 +36,19 @@ export class ProjetService  {
 
   addProjetwithIdUser(Projet : any) {
     const headers = this.createHeaders();
-    return this.httpClient.post(`${this.API_URL}/addprojet/{idUser}`, Projet, { headers })
+    return this.httpClient.post(`${this.API_URL}/addprojet/admin123`, Projet, { headers })
   }
 
   getProjectById(projectId: any): Observable<any> {
     const headers = this.createHeaders();
     const url = `${this.API_URL}/GetProjet/${projectId}`; 
     return this.httpClient.get(url, { headers });
+  }
+
+  deleteProject(projectId: Number) {
+    const headers = this.createHeaders();
+    const url = `${this.API_URL}/removeProjet/admin123/${projectId}`;
+    return this.httpClient.delete(url, { headers });
   }
 
 }
