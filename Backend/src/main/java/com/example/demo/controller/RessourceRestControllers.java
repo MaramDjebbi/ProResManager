@@ -2,16 +2,12 @@ package com.example.demo.controller;
 
 import com.example.demo.entites.ApiResponse;
 import com.example.demo.entites.Ressources;
-import com.example.demo.entites.User;
-import com.example.demo.entites.projet;
-import com.example.demo.services.IRessource;
-import com.example.demo.services.RessourceServices;
+import com.example.demo.services.impl.RessourceServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,7 +38,7 @@ public class RessourceRestControllers {
 
     @PostMapping("/addressource/{idUser}")
     public ResponseEntity<String> addRessourcewithIdUser(@RequestBody Ressources r ,
-                                             @PathVariable("idUser") Long idUser) {
+                                             @PathVariable("idUser") String idUser) {
         Ressources ressource = ressourceControl.addRessourcewithIdUser(r,idUser);
         ApiResponse response = new ApiResponse();
         response.setMessage("Ressource ajouté avec succès !");
@@ -62,7 +58,7 @@ public class RessourceRestControllers {
 
     @DeleteMapping("/removeRessource/{iduser}/{idressource}")
     public ResponseEntity<String> removeRessource(@PathVariable("idressource") Long idressource,
-                             @PathVariable("iduser") Long idUser) {
+                             @PathVariable("iduser") String idUser) {
         ApiResponse response = new ApiResponse();
         Integer test = ressourceControl.removeRessouce(idressource, idUser);
         if(test == 1){

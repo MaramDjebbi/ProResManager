@@ -1,2 +1,7 @@
-package com.example.demo.services;public interface IRole {
+package com.example.demo.services;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public interface IRole {
 }

@@ -3,6 +3,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.Date;
 import java.util.List;
 
@@ -19,9 +20,16 @@ public class Session implements Serializable {
     private Long idsession;
     private Date dateDebutSession;
     private Date dateFinSession;
-    private String duréeprojet ;
+    private String moisA;
+    private String moisB;
+    private String moisC;
+    private Long joursTravailMoisA;
+    private Long joursTravailMoisb;
+    private Long joursTravailMoisC;
+    private String email ;
     @Enumerated(EnumType.STRING)
     private TypeSession typeSession ;
+
 
     // liaison avec projet one to many
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true , mappedBy = "session")
@@ -42,5 +50,18 @@ public class Session implements Serializable {
     @JsonIgnore
     @JoinColumn(name = "idUser")
     private User user;
+
+
+    public Object get(String attributeName) {
+        try {
+            Class<?> clazz = this.getClass();
+            Field field = clazz.getDeclaredField(attributeName);
+            field.setAccessible(true);
+            return field.get(this);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 }

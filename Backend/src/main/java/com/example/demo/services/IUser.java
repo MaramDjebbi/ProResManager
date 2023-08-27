@@ -1,2 +1,8 @@
-package com.example.demo.services;public interface IUser {
+package com.example.demo.services;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public interface IUser {
+    void initRolesAndUser();
 }

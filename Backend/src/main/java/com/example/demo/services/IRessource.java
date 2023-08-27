@@ -12,9 +12,9 @@ public interface IRessource {
     List<Ressources> getAllRessources();
 
     Optional<Ressources> getRessourceWithID(Long id);
-    Integer removeRessouce(Long idRessources, Long idUser);
+    Integer removeRessouce(Long idRessources, String idUser);
 
     Ressources updateRessource(Ressources r, Long idRessource);
 
-    Ressources addRessourcewithIdUser(Ressources r, Long idUser);
+    Ressources addRessourcewithIdUser(Ressources r, String idUser);
 }

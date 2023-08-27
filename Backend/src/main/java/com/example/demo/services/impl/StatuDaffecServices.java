@@ -1,7 +1,8 @@
-package com.example.demo.services;
+package com.example.demo.services.impl;
 
 import com.example.demo.entites.StatuDaffectation;
 import com.example.demo.repository.StatuDaffectationRepo;
+import com.example.demo.services.IStatuDaffec;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

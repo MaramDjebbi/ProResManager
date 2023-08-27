@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 import com.example.demo.entites.Naturedaffectation;
-import com.example.demo.services.NatureDaffecServices;
+import com.example.demo.services.impl.NatureDaffecServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

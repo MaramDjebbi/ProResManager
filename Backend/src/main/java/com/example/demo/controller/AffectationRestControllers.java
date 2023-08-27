@@ -2,8 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entites.Affectation;
 import com.example.demo.entites.ApiResponse;
-import com.example.demo.entites.projet;
-import com.example.demo.services.AffectationServices;
+import com.example.demo.services.impl.AffectationServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +38,7 @@ public class AffectationRestControllers {
 
     @PostMapping("/addaffectation/{idUser}")
     public ResponseEntity<String> addAffectation(@RequestBody Affectation Affectation,
-                                                 @PathVariable("idUser") Long idUser) {
+                                                 @PathVariable("idUser") String idUser) {
         List<String> affectation = affectationControl.addAffectation(Affectation,idUser);
         ApiResponse response = new ApiResponse();
 

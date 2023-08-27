@@ -1,8 +1,9 @@
-package com.example.demo.services;
+package com.example.demo.services.impl;
 
 import com.example.demo.entites.*;
 import com.example.demo.repository.UserRepo;
 import com.example.demo.repository.projetRepo;
+import com.example.demo.services.IProjet;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,9 +57,9 @@ public class ProjetServices implements IProjet {
     }
 
     @Override
-    public Integer removeProjet(Long idprojet, Long idUser){
+    public Integer removeProjet(Long idprojet, String idUser){
         User currentUser = userRepository.findById(idUser).orElse(null);
-        if(currentUser.getRole().getRoleName() == "admin" ) {
+        if(currentUser.getRole().getRoleName()=="Admin") {
             projetRepository.deleteById(idprojet);
             return 1;
         }
@@ -68,7 +69,7 @@ public class ProjetServices implements IProjet {
 
 
     @Override
-    public projet addProjetwithIdUser(projet p, Long idUser ) {
+    public projet addProjetwithIdUser(projet p, String idUser ) {
         User user = userRepository.findById(idUser).orElse(null);
         p.setUser(user);
         projet projetExistant = projetRepository.findByNomprojet(p.getNomprojet());

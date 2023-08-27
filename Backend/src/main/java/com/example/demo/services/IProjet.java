@@ -12,9 +12,9 @@ public interface IProjet {
     Optional<projet> getProjetWithID(Long id);
     List<projet> GetAllprojet();
 
-    Integer removeProjet(Long idprojet,  Long idUser);
+    Integer removeProjet(Long idprojet,  String idUser);
 
-    projet addProjetwithIdUser(projet p, Long idUser);
+    projet addProjetwithIdUser(projet p, String idUser);
 
 
 

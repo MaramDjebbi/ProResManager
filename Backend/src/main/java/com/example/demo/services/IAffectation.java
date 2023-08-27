@@ -14,7 +14,7 @@ public interface IAffectation {
     List<Affectation> getAllAffectations();
     Optional<Affectation> getAffectationWithID(Long id);
 
-    List<String> addAffectation(Affectation affectation , Long idUser);
+    List<String> addAffectation(Affectation affectation , String idUser);
 
 
     List<String> getExceededMonths(Affectation newAffectation, Ressources resource);

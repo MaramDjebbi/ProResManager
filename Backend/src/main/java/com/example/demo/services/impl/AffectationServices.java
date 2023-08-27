@@ -1,7 +1,8 @@
-package com.example.demo.services;
+package com.example.demo.services.impl;
 
 import com.example.demo.entites.*;
 import com.example.demo.repository.*;
+import com.example.demo.services.IAffectation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +70,7 @@ public class AffectationServices implements IAffectation {
 
 
     @Override
-    public List<String> addAffectation (Affectation affectation , Long idUser) {
+    public List<String> addAffectation (Affectation affectation , String idUser) {
         Ressources r = ressourceRepository.findByNomRessourceAndPrenomRessource(affectation.getNomRessource(), affectation.getPrenomRessource()) ;
         Affectation f = affectationRepository.findByProjetAndResssource(affectation.getProjet(), r);
         if(f != null){

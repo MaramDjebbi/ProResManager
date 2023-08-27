@@ -30,10 +30,10 @@ public class WebConfig {
                 HttpMethod.PUT.name(),
                 HttpMethod.DELETE.name()
         ));
-config.setMaxAge(3600L);
-source.registerCorsConfiguration("/**", config);
-FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter());
-bean.setOrder(-102);
+        config.setMaxAge(3600L);
+        source.registerCorsConfiguration("/**", config);
+        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter());
+        bean.setOrder(-102);
         return bean;
     }
 }

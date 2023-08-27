@@ -1,8 +1,9 @@
-package com.example.demo.services;
+package com.example.demo.services.impl;
 
 import com.example.demo.entites.*;
 import com.example.demo.repository.RessourceRepo;
 import com.example.demo.repository.UserRepo;
+import com.example.demo.services.IRessource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import java.lang.reflect.Field;
 import java.util.List;
 @Service
 @Slf4j
-public class RessourceServices implements IRessource{
+public class RessourceServices implements IRessource {
     @Autowired
     RessourceRepo ressourceRepository;
     @Autowired
@@ -32,9 +33,9 @@ public class RessourceServices implements IRessource{
     }
 
     @Override
-    public Integer removeRessouce(Long idRessources, Long idUser) {
+    public Integer removeRessouce(Long idRessources, String idUser) {
         User currentUser = userRepository.findById(idUser).orElse(null);
-        if(currentUser.getRole().getRoleName() == "admin"){
+        if(currentUser.getRole().getRoleName() == "Admin"){
             ressourceRepository.deleteById(idRessources);
         return 1;
         }
@@ -67,7 +68,7 @@ public class RessourceServices implements IRessource{
 
 
     @Override
-    public Ressources addRessourcewithIdUser(Ressources r, Long idUser) {
+    public Ressources addRessourcewithIdUser(Ressources r, String idUser) {
         User user = userRepository.findById(idUser).orElse(null);
         r.setUser(user);
         return ressourceRepository.save(r);
