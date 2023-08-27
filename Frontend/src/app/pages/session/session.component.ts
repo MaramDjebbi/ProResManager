@@ -15,12 +15,13 @@ import { session } from 'src/models/session';
 export class SessionComponent {
 
 
-  activeSession : session
+  activeSession : any ;
 
   constructor(private router: Router, private httpClient: HttpClient, private sessionService : sessionService ) { }
 
   ngOnInit() {
-    this.fetchActiveSession
+    this.fetchActiveSession();
+    console.log(this.activeSession);
   }
 
   fetchActiveSession(): void {

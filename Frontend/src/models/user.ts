@@ -1,9 +1,10 @@
-export class ressource {
+import { role } from "./role";
 
-    idUser: Number;
-    nom: String;
-    prenom: String;
-    emailr: String;
-    password: String;
-    roleUser: any;
+ export class user {
+
+    userEmail: String;
+    userFirstName: String;
+    userLastName: String;
+    userPassword: String;
+    roleUser: role;
 }

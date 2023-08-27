@@ -3,14 +3,18 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { userService } from 'src/app/service/userService';
+import { userAuthService } from 'src/app/service/user-auth';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
+
 export class LoginComponent implements OnInit, OnDestroy {
-  constructor( private router: Router, private userService: userService) {}
+  constructor( private router: Router, private userService: userService, private userAuthService: userAuthService) {}
 
   ngOnInit() {
   }
@@ -18,10 +22,18 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
+  
+
   login(loginForm: NgForm){
     this.userService.login(loginForm.value).subscribe(
-      (response) => {
-        console.log(response);
+      (response: any) => {
+        this.userAuthService.setUserInfo(response.user.userFirstName,response.user.userLastName);
+        this.userAuthService.setEmail(response.user.userEmail);
+        console.log(response.user.userFirstName);
+        console.log(response.user.userLastName);
+        this.userAuthService.setRole(response.user.role);
+        this.userAuthService.setToken(response.jwtToken);
+        this.router.navigate(['/projet']);
       },
       (error) => {
         console.log(error);

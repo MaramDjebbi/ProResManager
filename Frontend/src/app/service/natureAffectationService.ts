@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { natureAffectation } from 'src/models/natureAffectation';
+import { userAuthService } from './user-auth';
 
 @Injectable({
     providedIn: 'root'
@@ -10,14 +11,24 @@ import { natureAffectation } from 'src/models/natureAffectation';
 export class natureAffectationService {
 
     readonly API_URL = 'http://localhost:8082/NatureDaffectation';
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,private userAuthService: userAuthService) { }
 
-    getAllNatureAffectation(): Observable<natureAffectation[]> {
-        return this.httpClient.get<natureAffectation[]>(`${this.API_URL}/GetallNatureDaffectation`);
-    }
+  private createHeaders(): HttpHeaders {
+    const jwtToken = this.userAuthService.getToken();
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${jwtToken}`
+    });
+    return headers;
+  }
 
-    addNatureAffectation(natureAffectation : any) {
-        return this.httpClient.post(`${this.API_URL}/addNatureDaffectation`, natureAffectation)
-      }
+  getAllNatureAffectation(): Observable<natureAffectation[]> {
+    const headers = this.createHeaders();
+    return this.httpClient.get<natureAffectation[]>(`${this.API_URL}/GetallNatureDaffectation`, { headers });
+  }
+
+  addNatureAffectation(natureAffectation : any) {
+    const headers = this.createHeaders();
+    return this.httpClient.post(`${this.API_URL}/addNatureDaffectation`, natureAffectation, { headers })
+  }
 
 }

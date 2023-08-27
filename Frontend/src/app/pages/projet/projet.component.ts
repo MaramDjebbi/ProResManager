@@ -3,7 +3,6 @@ import { ProjetService  } from 'src/app/service/projetService';
 import { Projet } from 'src/models/projet';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
 @Component({
   selector: 'app-projet',
   template: '<button (click)="navigateToTarget()">Ajouter</button>',
@@ -16,7 +15,8 @@ export class ProjetComponent implements OnInit {
 
   projects: Projet[]= [];
 
-  constructor(private projetService : ProjetService  ,private router: Router, private httpClient: HttpClient){}
+  constructor(private projetService : ProjetService  ,private router: Router, private httpClient: HttpClient, ){}
+
 
 
   ngOnInit(): void {
@@ -55,7 +55,7 @@ export class ProjetComponent implements OnInit {
 
 
   deleteProject(projectId: Number): void {
-    const url = `http://localhost:8082/projet/removeProjet/1/${projectId}`;
+    const url = `http://localhost:8082/projet/removeProjet/admin123/${projectId}`;
     this.httpClient.delete(url)
       .subscribe(
         () => {

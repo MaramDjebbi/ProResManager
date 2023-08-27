@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { userAuthService } from 'src/app/service/user-auth';
 
 
 
@@ -16,10 +17,19 @@ export class AjouterProjetComponent  {
 
   newProject: any = {}; 
 
-  constructor(private httpClient: HttpClient,  private router: Router, private toastr: ToastrService) {}
+  constructor(private httpClient: HttpClient,  private router: Router, private toastr: ToastrService,private userAuthService: userAuthService) {}
+
+  private createHeaders(): HttpHeaders {
+    const jwtToken = this.userAuthService.getToken();
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${jwtToken}`
+    });
+    return headers;
+  }
 
   onSubmit() {
-    this.httpClient.post('http://localhost:8082/projet/addprojet/1', this.newProject)
+    const headers = this.createHeaders();
+    this.httpClient.post('http://localhost:8082/projet/addprojet/admin123', this.newProject, { headers })
     .subscribe(
         (response: any) => {
           this.newProject = {}; 
