@@ -20,6 +20,8 @@ import { EditAffectationComponent } from './pages/edit-affectation/edit-affectat
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { FilterPipe } from './filter.pipe';
+import { AddSessionComponent } from './pages/add-session/add-session.component';
+import { EditSessionComponent } from './pages/edit-session/edit-session.component';
 
 @NgModule({
   imports: [
@@ -46,6 +48,8 @@ import { FilterPipe } from './filter.pipe';
     MessageComponent,
     EditAffectationComponent,
     FilterPipe,
+    AddSessionComponent,
+    EditSessionComponent,
     
   ],
   providers: [],

@@ -14,15 +14,14 @@ import { HttpClient } from '@angular/common/http';
 export class ProjetComponent implements OnInit {
 
 
-  ngOnInit(): void {
-    this.fetchProjects();
-  }
-
-
-
   projects: Projet[]= [];
 
   constructor(private projetService : ProjetService  ,private router: Router, private httpClient: HttpClient){}
+
+
+  ngOnInit(): void {
+    this.fetchProjects();
+  }
 
   fetchProjects(): void {
     this.projetService.getAllProjet().subscribe(
@@ -51,9 +50,6 @@ export class ProjetComponent implements OnInit {
 
 
   
-
-
-
 
 
 

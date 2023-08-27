@@ -4,27 +4,25 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 
-
 @Component({
-  selector: 'app-ajouter-projet',
-  templateUrl: './ajouter-projet.component.html',
-  styleUrls: ['./ajouter-projet.component.scss']
+  selector: 'app-add-session',
+  templateUrl: './add-session.component.html',
+  styleUrls: ['./add-session.component.scss']
 })
 
 
-export class AjouterProjetComponent  {
+export class AddSessionComponent {
 
-  newProject: any = {}; 
+  newSession: any = {};
 
   constructor(private httpClient: HttpClient,  private router: Router, private toastr: ToastrService) {}
 
-  onSubmit() {
-    this.httpClient.post('http://localhost:8082/projet/addprojet/1', this.newProject)
-    .subscribe(
-        (response: any) => {
-          this.newProject = {}; 
-          this.router.navigate(['projet']);
-          const messageFromApi = response.message;
+  onSubmit(){
+    this.httpClient.post('http://localhost:8082/Session/addSession/1', this.newSession).subscribe(
+      (response: any) => {
+        this.newSession = {};
+        this.router.navigate(['session']);
+        const messageFromApi = response.message;
           this.toastr.success(messageFromApi);
         },
         (error: any) => {
@@ -33,6 +31,5 @@ export class AjouterProjetComponent  {
         }
     );
   }
-
-
+  
 }

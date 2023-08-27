@@ -1,6 +1,7 @@
 export enum TypeSession {
-    Active = 'active',
-    Inactive = 'inactive'
+    Active = 'Active',
+    Inactive = 'Inactive',
+    Scheduled = 'Scheduled'
 }
 
 export class session{
@@ -12,6 +13,6 @@ export class session{
     moisB: String;
     moisC: String;
     joursTravailMoisA: Number;
-    joursTravailMoisb: Number;
+    joursTravailMoisB: Number;
     joursTravailMoisC: Number;
 }

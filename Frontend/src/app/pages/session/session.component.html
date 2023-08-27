@@ -10,8 +10,7 @@
                 <div class="col">
                   <h3 class="text-uppercase  ls-1 mb-1">Session Actuelle</h3>
                 </div>
-                <button class="button-62" >Modifer</button>
-                <button class="button-62 add-button" >Ajouter</button>
+                <button class="button-62" (click)="navigateToTarget()" >Ajouter</button>
               </div>
             </div>
           <div class="col">
@@ -24,12 +23,12 @@
                       <div class="row">
                           <div class="col-lg-6">
                               <div class="form-group">
-                                  <label class="form-control-label text-dark" for="input-username">Date Début</label>
-                                  <input type="text" id="input-username" class="form-control form-control-alternatives" placeholder="Username" value="sss">
+                                  <label class="form-control-label text-dark" for="dateDebutSession">Date Début</label>
+                                  <input type="date" id="dateDebutSession" class="form-control form-control-alternatives"  [(ngModel)]="activeSession.dateDebutSession">
                               </div>
                               <div class="form-group">
-                                  <label class="form-control-label text-dark" for="input-email">Date Fin</label>
-                                  <input type="email" id="input-email" class="form-control form-control-alternatives" placeholder="fin" value="sss">
+                                  <label class="form-control-label text-dark" for="dateFinSession">Date Fin</label>
+                                  <input type="date" id="dateFinSession" class="form-control form-control-alternatives"  [(ngModel)]="activeSession.dateFinSession">
                               </div>
                           </div>
                       </div>
@@ -38,15 +37,18 @@
             </div>
             <div class="form-right">
               <form >
-                <label class="form-control-label text-dark" for="input-username">Jours de Travail par Mois</label>
+                <label class="form-control-label text-dark" for="jourstravail">Jours de Travail par Mois</label>
                 <div class="my-form">
-                <input type="text" id="input-username" class="form-control form-control-alternatives" placeholder="Username" value="sep">
-                <input type="text" id="input-username" class="form-control form-control-alternatives" placeholder="Username" value="oct">
-                <input type="text" id="input-username" class="form-control form-control-alternatives" placeholder="Username" value="nov">
+                <input type="text" id="moisA" class="form-control form-control-alternatives" [(ngModel)]="activeSession.moisA">
+                <input type="text" id="moisB" class="form-control form-control-alternatives" [(ngModel)]="activeSession.moisB">
+                <input type="text" id="moisC" class="form-control form-control-alternatives" [(ngModel)]="activeSession.moisC">
               </div>
               </form>
             </div>
           </div>
+          <div class="col d-flex justify-content-start mt-2 mb-3">
+            <button class="button-62" (click)="navigateToEdit(activeSession.idsession)" >Modifer</button>
+        </div>
         </div>
       </div>
     </div>
