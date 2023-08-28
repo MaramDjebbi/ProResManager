@@ -11,7 +11,7 @@ import { EditRessourceComponent } from './pages/edit-ressource/edit-ressource.co
 import { AjouterAffectationComponent } from './pages/ajouter-affectation/ajouter-affectation.component';
 import { EditAffectationComponent } from './pages/edit-affectation/edit-affectation.component';
 import { SessionComponent } from './pages/session/session.component';
-
+import { EditSessionComponent } from './pages/edit-session/edit-session.component';
 const routes: Routes = [
 
   {
@@ -52,6 +52,8 @@ const routes: Routes = [
   { path: 'editressource/:idRessource', component: EditRessourceComponent },
 
   { path: 'editaffectation/:idAffectation', component: EditAffectationComponent },
+
+  { path: 'editsession/:idsession', component: EditSessionComponent },
 
 ];
 

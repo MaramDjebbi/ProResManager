@@ -24,18 +24,18 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th scope="col">idAffectation  </th>
-                <th scope="col">Manager   </th>
-                <th scope="col">departement   </th>
-                <th scope="col">departement   </th>
-                <th scope="col">region   </th>
-                <th scope="col">Ressource   </th>
-                <th scope="col">projet   </th>
-                <th scope="col">naturedaffectations   </th>
-                <th scope="col">statuDaffectations   </th>
-                <th scope="col">moisA</th>
-                <th scope="col">moisB</th>
-                <th scope="col">moisC</th>
+                <th scope="col">idAffectation</th>
+                <th scope="col">Manager</th>
+                <th scope="col">departement</th>
+                <th scope="col">country</th>
+                <th scope="col">region</th>
+                <th scope="col">Ressource</th>
+                <th scope="col">projet</th>
+                <th scope="col">naturedaffectations</th>
+                <th scope="col">statuDaffectations</th>
+                <th scope="col">{{activeSession.moisA}}</th>
+                <th scope="col">{{activeSession.moisB}}</th>
+                <th scope="col">{{activeSession.moisC}}</th>
                 <th scope="col">sommeParProjet</th>
                 <th scope="col"></th>
               </tr>
@@ -47,29 +47,29 @@
                   {{ affectation.nomManager + ' ' + affectation.prenomManager }}
                 </td>                  
                 <td>{{affectation.departement}}</td>
-                  <td>{{affectation.country}}</td>
-                  <td>{{affectation.region}}</td>
-                  <td *ngIf="affectation.nomRessource && affectation.prenomRessource">
+                <td>{{affectation.country}}</td>
+                <td>{{affectation.region}}</td>
+                <td *ngIf="affectation.nomRessource && affectation.prenomRessource">
                     {{ affectation.nomRessource + ' ' + affectation.prenomRessource }}
-                  </td>                  
-                  <td>{{affectation.projet}}</td>
-                  <td>{{affectation.natureAff}}</td>
-                  <td>{{affectation.statutAff}}</td>
-                  <td>{{affectation.moisA}}</td>
-                  <td>{{affectation.moisB}}</td>
-                  <td>{{affectation.moisC}}</td>
-                  <td>{{affectation.sommeParProjet}}</td>
-                  <td class="text-right">
-                    <div ngbDropdown   placement="top-right">
-                      <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                        <i class="fas fa-ellipsis-v"></i>
-                      </a>
-                      <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" (click)="navigateToEdit(affectation.idAffectation)" role="button">Edit</a>
-                        <a class="dropdown-item" (click)="deleteAffectation(affectation.idAffectation)" role="button">Delete</a>
-                      </div>
+                </td>                  
+                <td>{{affectation.projet}}</td>
+                <td>{{affectation.natureAff}}</td>
+                <td>{{affectation.statutAff}}</td>
+                <td>{{affectation.moisA}}</td>
+                <td>{{affectation.moisB}}</td>
+                <td>{{affectation.moisC}}</td>
+                <td>{{affectation.sommeParProjet}}</td>
+                <td class="text-right">
+                  <div ngbDropdown   placement="top-right">
+                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                      <a class="dropdown-item" (click)="navigateToEdit(affectation.idAffectation)" role="button">Edit</a>
+                      <a class="dropdown-item" (click)="deleteAffectation(affectation.idAffectation)" role="button">Delete</a>
                     </div>
-                  </td>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>

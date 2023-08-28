@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { sessionService } from 'src/app/service/sessionService';
-import { HttpClient } from '@angular/common/http';
-import { session } from 'src/models/session';
 
 
 @Component({
@@ -17,7 +15,7 @@ export class SessionComponent {
 
   activeSession : any ;
 
-  constructor(private router: Router, private httpClient: HttpClient, private sessionService : sessionService ) { }
+  constructor(private router: Router, private sessionService : sessionService ) { }
 
   ngOnInit() {
     this.fetchActiveSession();
@@ -38,7 +36,6 @@ export class SessionComponent {
     );
   }
 
-
   navigateToTarget() {
     console.log("test ajout session");
     this.router.navigate(['/addsession']);
@@ -47,6 +44,5 @@ export class SessionComponent {
   navigateToEdit(sessionId: Number){
     this.router.navigate(['/editsession', sessionId]);
   }
-
   
 }

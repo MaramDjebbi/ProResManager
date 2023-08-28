@@ -27,6 +27,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'editaffectation/:idAffectation', component: EditAffectationComponent },
     { path: 'session', component: SessionComponent },
     { path: 'addsession', component: AddSessionComponent},
-    { path: 'editsession/:idSession', component: EditSessionComponent}
+    { path: 'editsession/:idsession', component: EditSessionComponent}
 
 ];

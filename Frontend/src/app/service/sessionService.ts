@@ -28,7 +28,7 @@ export class sessionService {
         return this.httpClient.get<session[]>(`${this.API_URL}/GetallSession`, { headers });
     }
 
-    getSessionById(sessionId: any): Observable<any> {
+    getSessionById(sessionId: Number): Observable<any> {
         const headers = this.createHeaders();
         const url = `${this.API_URL}/GetSession/${sessionId}`; 
         return this.httpClient.get(url, { headers });
@@ -39,7 +39,12 @@ export class sessionService {
         return this.httpClient.get(`${this.API_URL}/getActiveSession`, { headers });
     }
     
-    updateSession(session: session, sessionId: number) {
+    addSession(Session: any){
+        const headers = this.createHeaders();
+        const url = `${this.API_URL}/addSession/admin123`;
+        return this.httpClient.post(url, Session, { headers });
+    }
+    updateSession(session: any, sessionId: number) {
         const headers = this.createHeaders();
         const url = `${this.API_URL}/update/${sessionId}`;
         return this.httpClient.put(url, session, { headers });

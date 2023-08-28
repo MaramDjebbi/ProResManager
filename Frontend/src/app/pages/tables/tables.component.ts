@@ -4,6 +4,7 @@ import { AffectationService } from 'src/app/service/affectationService';
 import { Router } from '@angular/router';
 import { FilterPipe } from 'src/app/filter.pipe';
 import { ToastrService } from 'ngx-toastr';
+import { sessionService } from 'src/app/service/sessionService';
 
 
 
@@ -19,13 +20,15 @@ export class TablesComponent implements OnInit {
   searchText = '';
 
   affectations: affectation[] = [];
-  
+  activeSession: any = {};
 
-  constructor(private affectationService : AffectationService  ,private router: Router, private toastr: ToastrService,){}
+  constructor(private affectationService : AffectationService  ,private router: Router, private toastr: ToastrService,private sessionService: sessionService){}
 
   
   ngOnInit() {
     this.fetchProjects();
+    this.fetchActiveSession();
+    console.log(this.activeSession);
   }
 
   fetchProjects(): void {
@@ -39,6 +42,20 @@ export class TablesComponent implements OnInit {
       }
     );
   }
+
+  fetchActiveSession(): void {
+    this.sessionService.getActiveSession().subscribe(
+      (activeSession: any) => {
+        activeSession.dateDebutSession = new Date(activeSession.dateDebutSession).toISOString().split('T')[0];
+        activeSession.dateFinSession = new Date(activeSession.dateFinSession).toISOString().split('T')[0];
+        this.activeSession = activeSession; 
+      },
+      (error) => {
+        console.error('Error fetching active session:', error);
+      }
+    );
+  }
+
 
   navigateToTarget() {
     console.log("test ajout affectation");

@@ -14,7 +14,7 @@
                 </div>
                 <div class="form-container">
                     <div class="form-left">
-                        <form (ngSubmit)="onSubmit()" class="ml-2">
+                        <form  class="ml-2">
                             <div class="pl-lg-4">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -36,7 +36,7 @@
                             <label class="form-control-label text-dark" for="input-username">Mois Concernés</label>
                             <div class="my-form">
                                 <input type="text" id="moisA" class="form-control form-control-alternatives" [(ngModel)]="newSession.moisA" placeholder="1er Mois" required>
-                                <input type="text" id="moisB" class="form-control form-control-alternatives" [(ngModel)]="newSession.moisB" placeholder="2eme Mois" required>
+                                <input type="text" id="moisb" class="form-control form-control-alternatives" [(ngModel)]="newSession.moisB" placeholder="2eme Mois" required>
                                 <input type="text" id="moisC" class="form-control form-control-alternatives" [(ngModel)]="newSession.moisC" placeholder="3eme Mois" required>
                             </div>
                         </form>
@@ -46,14 +46,14 @@
                                 <label class="form-control-label text-dark" for="input-username">Jours de Travail par Mois</label>
                                 <div class="my-form">
                                     <input type="text" id="joursTravailMoisA" class="form-control form-control-alternatives" [(ngModel)]="newSession.joursTravailMoisA" placeholder="Jours Travail 1er Mois" required>
-                                    <input type="text" id="joursTravailMoisB" class="form-control form-control-alternatives" [(ngModel)]="newSession.joursTravailMoisB" placeholder="Jours Travail 2eme Mois" required>
+                                    <input type="text" id="joursTravailMoisB" class="form-control form-control-alternatives" [(ngModel)]="newSession.joursTravailMoisb" placeholder="Jours Travail 2eme Mois" required>
                                     <input type="text" id="joursTravailMoisC" class="form-control form-control-alternatives" [(ngModel)]="newSession.joursTravailMoisC" placeholder="Jours Travail 3eme Mois" required>
                                 </div>
                             </form>
                     </div>
                 </div>
                 <div class="col d-flex justify-content-end mt-4">
-                    <button type="submit" class="button-62">Submit</button>
+                    <button type="submit" class="button-62" (click)="onSubmit()">Submit</button>
                 </div>
             </div>
         </div>
