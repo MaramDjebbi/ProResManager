@@ -7,4 +7,5 @@ public interface UserdDao extends JpaRepository<User, String >{
 
     Optional<User> findOneByUserFirstName(String userFirstName);
 
+    User findAllByUserName(String idUser);
 }

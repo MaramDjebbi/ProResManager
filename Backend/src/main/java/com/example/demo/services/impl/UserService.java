@@ -7,12 +7,13 @@ import com.example.demo.entites.Role;
 import com.example.demo.entites.User;
 import com.example.demo.services.IUser;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.lang.reflect.Field;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -26,6 +27,15 @@ public class UserService implements IUser {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Override
+    public List<User> getAllUsers() {
+        return userDao.findAll();
+    }
+
+    @Override
+    public Optional<User> getUserWithID(String id){
+        return userDao.findById(id);
+    }
     public Integer registrerNewUser(User user) {
         Role role = roleDao.findOneByRoleName("Manager").get();
         if (role != null) {
@@ -37,7 +47,6 @@ public class UserService implements IUser {
         else{
             return 0;
         }
-
     }
 
     @Override
@@ -56,7 +65,7 @@ public class UserService implements IUser {
         User adminUser = new User();
         adminUser.setUserFirstName("admin");
         adminUser.setUserLastName("admin");
-        adminUser.setUserEmail("admin123");
+        adminUser.setUserName("admin123");
         adminUser.setUserPassword(getEncodedPassword("admin@pass"));
         adminUser.setRole(adminRole);
         userDao.save(adminUser);
@@ -66,4 +75,33 @@ public class UserService implements IUser {
         return passwordEncoder.encode(password);
     }
 
+
+    public static List<String> getUserAttributes(Class<?> userClass){
+        List<String> attributeNames = new ArrayList<>();
+        Field[] fields =userClass.getDeclaredFields();
+        for (Field field : fields) {
+            attributeNames.add(field.getName());
+        }
+        return attributeNames;
+    }
+
+    public Integer updateUser(String idUser, User user){
+        User existingUser = userDao.findById(idUser).get();
+        List<String> attributes = getUserAttributes(User.class);
+        Set<String> ignoreProperties = new HashSet<>();
+        for (String attribute : attributes) {
+            if (user.get(attribute) == null)
+                ignoreProperties.add(attribute);
+        }
+        String[] ignorePropertiesArray = ignoreProperties.toArray(new String[0]);
+        BeanUtils.copyProperties(user, existingUser, ignorePropertiesArray);
+        userDao.save(existingUser);
+        return 1;
+    }
+
+    @Override
+    public Integer deleteUser(String idUser) {
+        userDao.deleteById(idUser);
+        return 1;
+    }
 }

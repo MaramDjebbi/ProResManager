@@ -56,16 +56,30 @@ public class ProjetServices implements IProjet {
         return projetRepository.save(existingProjet);
     }
 
-    @Override
-    public Integer removeProjet(Long idprojet, String idUser){
+    /*@Override
+    public Integer removeProjet(Long idprojet, String idUser) {
         User currentUser = userRepository.findById(idUser).orElse(null);
-        if(currentUser.getRole().getRoleName()=="Admin") {
+        if ((currentUser.getRole().getRoleName() != "Admin") && (currentUser.getRole().getRoleName() == "Manager")){
             projetRepository.deleteById(idprojet);
             return 1;
         }
         else
             return 0;
+    }*/
+
+    @Override
+    public Integer removeProjet(Long idprojet, String idUser){
+        User currentUser = userRepository.findById(idUser).orElse(null);
+        if (currentUser != null && currentUser.getRole() != null) {
+            String roleName = currentUser.getRole().getRoleName();
+            if ("Admin".equals(roleName)) {
+                projetRepository.deleteById(idprojet);
+                return 1;
+            }
+        }
+        return 0;
     }
+
 
 
     @Override

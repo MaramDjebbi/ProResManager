@@ -60,7 +60,7 @@ public class AppConfiguration implements InitializingBean {
             User adminUser = new User();
             adminUser.setUserFirstName("admin");
             adminUser.setUserLastName("admin");
-            adminUser.setUserEmail("admin123");
+            adminUser.setUserName("admin123");
             adminUser.setUserPassword(passwordEncoder.encode("admin@pass"));
             Role adminRole = roleDao.findOneByRoleName("Admin").orElse(null);
             adminUser.setRole(adminRole);
@@ -76,7 +76,7 @@ public class AppConfiguration implements InitializingBean {
             User adminUser = new User();
             adminUser.setUserFirstName("admin2");
             adminUser.setUserLastName("admin2");
-            adminUser.setUserEmail("admin2");
+            adminUser.setUserName("admin2");
             adminUser.setUserPassword(passwordEncoder.encode("admin@pass"));
             Role adminRole = roleDao.findOneByRoleName("Admin").orElse(null);
             adminUser.setRole(adminRole);

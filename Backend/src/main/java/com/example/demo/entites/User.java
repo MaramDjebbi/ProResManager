@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -17,6 +18,7 @@ import java.util.Set;
 public class User implements Serializable {
 
     @Id
+    private String userName;
     private String userEmail;
     private String userFirstName;
     private String userLastName;
@@ -26,16 +28,17 @@ public class User implements Serializable {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    /*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_ROLE",
-            joinColumns = {
-                    @JoinColumn(name = "USER_ID")
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "ROLE_ID")
-            }
-    )
-    private Set<Role> role;*/
+    public Object get(String attributeName) {
+        try {
+            Class<?> clazz = this.getClass();
+            Field field = clazz.getDeclaredField(attributeName);
+            field.setAccessible(true);
+            return field.get(this);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 
     // one to many with projet

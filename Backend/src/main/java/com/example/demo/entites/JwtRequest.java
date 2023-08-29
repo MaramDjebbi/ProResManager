@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class JwtRequest  implements Serializable {
 
 
-    private String userEmail;
+    private String userName;
     private String userPassword ;
 
 }

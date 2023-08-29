@@ -31,18 +31,21 @@ public class Session implements Serializable {
     private TypeSession typeSession ;
 
 
+
     // liaison avec projet one to many
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true , mappedBy = "session")
+    //@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true , mappedBy = "session")
+    /*@OneToMany( mappedBy = "session")
     @JsonIgnore
     @ToString.Exclude
     private List<projet> projets;
 
 
     // liaison avec ressource one to many
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true , mappedBy = "session")
+    // @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true , mappedBy = "session")
+    @OneToMany(mappedBy = "session")
     @JsonIgnore
     @ToString.Exclude
-    private List<Ressources> ressources;
+    private List<Ressources> ressources;*/
 
     // liaison avec user Many To One
 

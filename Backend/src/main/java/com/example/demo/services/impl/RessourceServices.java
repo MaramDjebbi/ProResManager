@@ -35,12 +35,14 @@ public class RessourceServices implements IRessource {
     @Override
     public Integer removeRessouce(Long idRessources, String idUser) {
         User currentUser = userRepository.findById(idUser).orElse(null);
-        if(currentUser.getRole().getRoleName() == "Admin"){
-            ressourceRepository.deleteById(idRessources);
-        return 1;
+        if (currentUser != null && currentUser.getRole() != null) {
+            String roleName = currentUser.getRole().getRoleName();
+            if ("Admin".equals(roleName)) {
+                ressourceRepository.deleteById(idRessources);
+                return 1;
+            }
         }
-        else
-                return 0;
+        return 0;
     }
 
     public static List<String> getResourceAttributes(Class<?> resourceClass) {

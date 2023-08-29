@@ -13,17 +13,19 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-    @RequestMapping("/projet")
-    public class ProjetRestControllers {
-          @Autowired
-          ProjetServices  projetControl;
+
+
+@RequestMapping("/projet")
+public class ProjetRestControllers {
+    @Autowired
+    ProjetServices  projetControl;
 
 
     @GetMapping("/GetallProject")
     @PreAuthorize("isAuthenticated()")
     List<projet> GetAllprojet() {
              return projetControl.GetAllprojet();
-         }
+    }
 
    @GetMapping("/GetProjet/{idProjet}")
    public ResponseEntity<projet> getProjetById(@PathVariable("idProjet") Long idProjet) {
@@ -35,7 +37,7 @@ import java.util.Optional;
             response.setMessage("projet not found");
             return new ResponseEntity(response, HttpStatus.CONFLICT);
         }
-    }
+   }
 
    @PostMapping("/addprojet/{idUser}")
    public ResponseEntity<String> addProjetwithIdUser(@RequestBody projet p ,
@@ -52,7 +54,7 @@ import java.util.Optional;
         }
     }
 
-    //http://localhost:8082/updateProjet/1
+    //host:8082/updateProjet/1
     @PutMapping("/updates/{idprojet}")
     public ResponseEntity<String> updateProjet(@RequestBody projet p,
                              @PathVariable("idprojet") Long idprojet) {
@@ -71,7 +73,8 @@ import java.util.Optional;
         if (test == 1) {
             response.setMessage("Project deleted !");
             return new ResponseEntity(response, HttpStatus.OK);
-        } else {
+        }
+        else{
             response.setMessage("only admin can delete a project");
             return new ResponseEntity(response, HttpStatus.CONFLICT);
         }
