@@ -26,10 +26,11 @@ export class EditUserComponent implements OnInit{
         this.userToEdit = userData;
       });
     });
+    console.log(this.userToEdit.userName);
   }
 
   onSubmit() {
-    this.userService.updateUser(this.userToEdit, this.userToEdit.iduser).subscribe(
+    this.userService.updateUser(this.userToEdit, this.userToEdit.userName).subscribe(
       updatedUser => {
         console.log('user updated:', updatedUser);
         this.router.navigate(['user-profile'])

@@ -36,7 +36,7 @@ export class AffectationService{
 
     addAffectationWithIdUser(affectation: affectation){
       const headers = this.createHeaders();
-      return this.httpClient.post(`${this.API_URL}/affectation/addaffectation/admin123`,affectation, { headers });
+      return this.httpClient.post(`${this.API_URL}/affectation/addaffectation/${this.userAuthService.getUserName()}`,affectation, { headers });
     }
 
     updateAffectation(affectation: affectation, affectationId: number) {

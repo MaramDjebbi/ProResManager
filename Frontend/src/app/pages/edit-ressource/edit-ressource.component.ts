@@ -35,7 +35,7 @@ export class EditRessourceComponent implements OnInit {
       updatedRessource => {
         console.log('Ressource updated:', updatedRessource);
         this.router.navigate(['ressource']);
-        const messageFromApi = "Project updated successfully ";
+        const messageFromApi = "ressource updated successfully ";
         this.toastr.success(messageFromApi);
       },
       (error: any) => {

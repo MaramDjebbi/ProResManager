@@ -26,7 +26,7 @@
               <div class="col ">
                 <h3 class="text-uppercase text-light ls-1 mb-1">tableau des ressources</h3>
               </div>
-              <button class="button-62" (click)="navigateToTarget()">Ajouter</button>
+              <button class="button-62" *ngIf="isActive()" (click)="navigateToTarget()">Ajouter</button>
             </div>
           </div>
           <div >
@@ -50,8 +50,8 @@
                     {{ ressource.nomManager + ' ' + ressource.prenomManager }}
                   </td>
                   <td class=" text-light">{{ressource.departement}}</td>
-                  <td class="text-right">
-                    <div ngbDropdown   placement="top-right">
+                  <td  class="text-right">
+                    <div *ngIf="isActive()" ngbDropdown   placement="top-right">
                       <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                         <i class="fas fa-ellipsis-v"></i>
                       </a>

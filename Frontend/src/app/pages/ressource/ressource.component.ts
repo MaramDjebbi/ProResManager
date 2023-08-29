@@ -3,7 +3,7 @@ import { RessourceService } from 'src/app/service/ressourceService';
 import { Ressource } from 'src/models/ressource';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
+import { sessionService } from 'src/app/service/sessionService';
 @Component({
   selector: 'app-resource',
   template: '<button (click)="navigateToTarget()">Ajouter</button>',
@@ -17,7 +17,11 @@ export class RessourceComponent implements OnInit {
 
   ressources: Ressource[]= [];
 
-  constructor(private RessourceService : RessourceService, private router: Router, private toastr: ToastrService ){}
+  constructor(private RessourceService : RessourceService, private router: Router, private toastr: ToastrService, private sessionService: sessionService ){}
+
+  isActive(): boolean {
+    return this.sessionService.isActive;
+  }
 
   ngOnInit(): void {
     this.fetchRessources();

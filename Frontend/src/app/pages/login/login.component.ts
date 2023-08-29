@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       (response: any) => {
         this.userAuthService.setUserInfo(response.user.userFirstName,response.user.userLastName);
         this.userAuthService.setUserName(response.user.userName);
+        this.userAuthService.setUserEmail(response.user.userEmail);
         this.userAuthService.setRole(response.user.role);
         this.userAuthService.setToken(response.jwtToken);
         this.router.navigate(['/projet']);

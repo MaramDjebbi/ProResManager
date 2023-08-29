@@ -33,6 +33,10 @@ export class userAuthService {
         localStorage.setItem('userName',userName);
     }
 
+    public setUserEmail(userEmail: string){
+        localStorage.setItem('userEmail',userEmail);
+    }
+
     public getFirstName(){
         return localStorage.getItem('firstName');
     }
@@ -43,6 +47,10 @@ export class userAuthService {
 
     public getUserName(){
         return localStorage.getItem('userName');
+    }
+
+    public getUserEmail(){
+        return localStorage.getItem('userEmail');
     }
 
     public setRole(role: role){

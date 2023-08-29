@@ -15,6 +15,7 @@ export class ProjetService  {
   readonly API_URL = 'http://localhost:8082/projet';
   constructor(private httpClient: HttpClient,private userAuthService: userAuthService) { }
   
+  
   private createHeaders(): HttpHeaders {
     const jwtToken = this.userAuthService.getToken();
     const headers = new HttpHeaders({
@@ -22,6 +23,7 @@ export class ProjetService  {
     });
     return headers;
   }
+
   
   getAllProjet(): Observable<Projet[]> {
     const headers = this.createHeaders();
@@ -36,7 +38,7 @@ export class ProjetService  {
 
   addProjetwithIdUser(Projet : any) {
     const headers = this.createHeaders();
-    return this.httpClient.post(`${this.API_URL}/addprojet/admin123`, Projet, { headers })
+    return this.httpClient.post(`${this.API_URL}/addprojet/${this.userAuthService.getUserName()}`, Projet, { headers })
   }
 
   getProjectById(projectId: any): Observable<any> {
@@ -45,9 +47,9 @@ export class ProjetService  {
     return this.httpClient.get(url, { headers });
   }
 
-  deleteProject(projectId: Number) {
+  deleteProject( projectId: Number) {
     const headers = this.createHeaders();
-    const url = `${this.API_URL}/removeProjet/admin123/${projectId}`;
+    const url = `${this.API_URL}/removeProjet/${this.userAuthService.getUserName()}/${projectId}`;
     return this.httpClient.delete(url, { headers });
   }
 

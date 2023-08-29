@@ -22,6 +22,26 @@ export class sessionService {
         });
        return headers;
     }
+
+    isActive: boolean;
+
+   checkActiveSession() {
+    this.getActiveSession().subscribe(
+      (response: any) => {
+        if (response && response.message === "no active session") {
+          this.isActive=false;
+          console.log("No active session");
+        } else {
+          console.log("Active session exists:", response);
+          this.isActive=true;
+        }
+      },
+      (error: any) => {
+        console.error("Error:", error);
+        return 
+      }
+    );
+  }
     
     getAllSession(): Observable<session[]>{
         const headers = this.createHeaders();
@@ -34,14 +54,14 @@ export class sessionService {
         return this.httpClient.get(url, { headers });
     }
 
-    getActiveSession() {
+    getActiveSession(): any {
         const headers = this.createHeaders();
         return this.httpClient.get(`${this.API_URL}/getActiveSession`, { headers });
     }
     
     addSession(Session: any){
         const headers = this.createHeaders();
-        const url = `${this.API_URL}/addSession/admin123`;
+        const url = `${this.API_URL}/addSession/${this.userAuthService.getUserName()}`;
         return this.httpClient.post(url, Session, { headers });
     }
     updateSession(session: any, sessionId: number) {

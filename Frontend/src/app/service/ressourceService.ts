@@ -39,7 +39,7 @@ export class RessourceService {
 
   addRessourcewithIdUser(Ressource : any) {
     const headers = this.createHeaders();
-    return this.httpClient.post(`${this.API_URL}/addressource/admin123`, Ressource, { headers })
+    return this.httpClient.post(`${this.API_URL}/addressource/${this.userAuthService.getUserName()}`, Ressource, { headers })
   }
 
  
@@ -51,7 +51,7 @@ export class RessourceService {
 
   deletRessource(resourceId: Number) {
     const headers = this.createHeaders();
-    const url = `${this.API_URL}/removeRessource/admin123/${resourceId}`;
+    const url = `${this.API_URL}/removeRessource/${this.userAuthService.getUserName()}/${resourceId}`;
     return this.httpClient.delete(url, { headers });
   }
 

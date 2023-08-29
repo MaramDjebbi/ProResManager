@@ -15,7 +15,6 @@ import { EditProjetComponent } from './pages/edit-projet/edit-projet.component';
 import { EditRessourceComponent } from './pages/edit-ressource/edit-ressource.component';
 import { TablesComponent } from './pages/tables/tables.component';
 import { AjouterAffectationComponent } from './pages/ajouter-affectation/ajouter-affectation.component';
-import { MessageComponent } from './pages/message/message.component';
 import { EditAffectationComponent } from './pages/edit-affectation/edit-affectation.component';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
@@ -46,7 +45,6 @@ import { EditUserComponent } from './pages/edit-user-profile/edit-user.component
     EditRessourceComponent,
     TablesComponent,
     AjouterAffectationComponent,
-    MessageComponent,
     EditAffectationComponent,
     FilterPipe,
     AddSessionComponent,

@@ -3,6 +3,8 @@ import { ProjetService  } from 'src/app/service/projetService';
 import { Projet } from 'src/models/projet';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { sessionService } from 'src/app/service/sessionService';
+
 
 @Component({
   selector: 'app-projet',
@@ -16,15 +18,20 @@ export class ProjetComponent implements OnInit {
 
   projects: Projet[]= [];
 
-  constructor(private projetService : ProjetService  ,private router: Router, private toastr: ToastrService ){}
 
+  constructor(private projetService : ProjetService  ,private router: Router, private toastr: ToastrService, private sessionService: sessionService ){}
 
+  isActive(): boolean {
+    return this.sessionService.isActive;
+  }
 
+  
   ngOnInit(): void {
     this.fetchProjects();
   }
 
   fetchProjects(): void {
+    
     this.projetService.getAllProjet().subscribe(
       (projects: Projet[]) => {
         this.projects = projects; 
