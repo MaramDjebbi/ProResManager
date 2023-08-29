@@ -29,8 +29,8 @@ export class NavbarComponent implements OnInit {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     this.userFirstName=this.userAuthService.getFirstName();
     this.userLastName=this.userAuthService.getLastName();
-    this.userEmail=this.userAuthService.getEmail();
-    this.userName=this.userAuthService.getEmail();
+    this.userEmail=this.userAuthService.getUserName();
+    //this.userName=this.userAuthService.getEmail();
   }
   getTitle(){
     var titlee = this.location.prepareExternalUrl(this.location.path());

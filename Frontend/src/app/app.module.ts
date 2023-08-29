@@ -22,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { FilterPipe } from './filter.pipe';
 import { AddSessionComponent } from './pages/add-session/add-session.component';
 import { EditSessionComponent } from './pages/edit-session/edit-session.component';
+import { EditUserComponent } from './pages/edit-user-profile/edit-user.component';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { EditSessionComponent } from './pages/edit-session/edit-session.componen
     FilterPipe,
     AddSessionComponent,
     EditSessionComponent,
+    EditUserComponent,
     
   ],
   providers: [],

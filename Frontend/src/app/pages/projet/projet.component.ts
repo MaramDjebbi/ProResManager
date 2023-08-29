@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ProjetService  } from 'src/app/service/projetService'; 
 import { Projet } from 'src/models/projet';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -17,7 +16,7 @@ export class ProjetComponent implements OnInit {
 
   projects: Projet[]= [];
 
-  constructor(private projetService : ProjetService  ,private router: Router, private httpClient: HttpClient, private toastr: ToastrService ){}
+  constructor(private projetService : ProjetService  ,private router: Router, private toastr: ToastrService ){}
 
 
 

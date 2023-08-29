@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { userAuthService } from 'src/app/service/user-auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -13,15 +14,19 @@ export class UserProfileComponent implements OnInit {
   userEmail: String;
   userName: String;
 
-  constructor(private userAuthService: userAuthService) { }
+  constructor(private userAuthService: userAuthService, private router: Router,) { }
 
   ngOnInit() {
     this.userFirstName=this.userAuthService.getFirstName();
     this.userLastName=this.userAuthService.getLastName();
-    this.userEmail=this.userAuthService.getEmail();
-    this.userName=this.userAuthService.getEmail();
-    console.log(this.userFirstName , this.userLastName , this.userEmail ,  this.userName);
+    this.userName=this.userAuthService.getUserName();
+    //this.userName=this.userAuthService.getEmail();
+    console.log( this.userName, this.userFirstName , this.userLastName );
 
+  }
+
+  navigateToEdit(userId: String){
+    this.router.navigate(['/edit-user-profile', userId]);
   }
 
 }

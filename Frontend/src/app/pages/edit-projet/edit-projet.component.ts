@@ -44,12 +44,4 @@ export class EditProjetComponent implements OnInit {
     );
   }
 
-
-
-
-
-
-
-
-
 }

@@ -12,7 +12,7 @@ import { EditRessourceComponent } from 'src/app/pages/edit-ressource/edit-ressou
 import { SessionComponent } from 'src/app/pages/session/session.component';
 import { AddSessionComponent } from 'src/app/pages/add-session/add-session.component';
 import { EditSessionComponent } from 'src/app/pages/edit-session/edit-session.component';
-
+import { EditUserComponent } from 'src/app/pages/edit-user-profile/edit-user.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
@@ -27,6 +27,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'editaffectation/:idAffectation', component: EditAffectationComponent },
     { path: 'session', component: SessionComponent },
     { path: 'addsession', component: AddSessionComponent},
-    { path: 'editsession/:idsession', component: EditSessionComponent}
+    { path: 'editsession/:idsession', component: EditSessionComponent},
+    { path: 'edit-user-profile/:iduser', component: EditUserComponent }
 
 ];

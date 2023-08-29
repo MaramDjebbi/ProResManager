@@ -1,4 +1,5 @@
 <!-- Sidenav -->
+<ng-container *ngIf="isloggedIn()">
 <app-sidebar></app-sidebar>
 <div class="main-content">
   <!-- Top navbar -->
@@ -9,3 +10,4 @@
     <app-footer></app-footer>
   </div>
 </div>
+</ng-container>

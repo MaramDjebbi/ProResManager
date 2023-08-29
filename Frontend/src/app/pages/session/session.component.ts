@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { sessionService } from 'src/app/service/sessionService';
-
+import { userAuthService } from 'src/app/service/user-auth';
 
 @Component({
   selector: 'app-session',
@@ -15,11 +15,18 @@ export class SessionComponent {
 
   activeSession : any ;
 
-  constructor(private router: Router, private sessionService : sessionService ) { }
+  constructor(private router: Router, private sessionService : sessionService, private userAuthService : userAuthService ) { }
 
   ngOnInit() {
     this.fetchActiveSession();
-    //console.log(this.activeSession);
+  }
+
+  isAdmin():boolean{
+    return this.userAuthService.isAdmin();
+  }
+
+  isManager():boolean{
+    return this.userAuthService.isManager();
   }
 
   fetchActiveSession(): void {

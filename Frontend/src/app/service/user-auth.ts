@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { role } from 'src/models/role';
 
 
@@ -12,15 +10,27 @@ import { role } from 'src/models/role';
  
 export class userAuthService {
 
-    constructor(private httpClient: HttpClient){}
+    role: role;
+
+    constructor(){}
+
+    public isAdmin(): boolean{
+        this.role = this.getRole();
+        return this.role.roleName=="Admin";
+    }
+
+    public isManager(): boolean{
+        this.role = this.getRole();
+        return this.role.roleName=="Manager";
+    }
 
     public setUserInfo(firstName: string, lastName: string){
         localStorage.setItem('firstName',firstName);
         localStorage.setItem('lastName',lastName);
     }
 
-    public setEmail(email: string){
-        localStorage.setItem('email',email);
+    public setUserName(userName: string){
+        localStorage.setItem('userName',userName);
     }
 
     public getFirstName(){
@@ -31,8 +41,8 @@ export class userAuthService {
         return localStorage.getItem('lastName');
     }
 
-    public getEmail(){
-        return localStorage.getItem('email');
+    public getUserName(){
+        return localStorage.getItem('userName');
     }
 
     public setRole(role: role){
