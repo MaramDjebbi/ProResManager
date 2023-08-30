@@ -43,12 +43,13 @@ export class NavbarComponent implements OnInit {
             return this.listTitles[item].title;
         }
     }
-    return 'Dashboard';
   }
 
   public isLoggedIn(){
     return this.userAuthService.isLoggedIn();
   }
+
+  
   public logout(){
     this.userAuthService.clear();
     this.router.navigate(['/login']);

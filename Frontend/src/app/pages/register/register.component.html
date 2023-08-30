@@ -19,13 +19,13 @@
       <div class="card bg-secondary shadow border-0">
         <div class="card-body px-lg-5 py-lg-5">
           
-          <form role="form">
+          <form (ngSubmit)="onSubmit()" role="form">
             <div class="form-group">
               <div class="input-group input-group-alternative mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" placeholder="Nom" type="text">
+                <input class="form-control" placeholder="Nom" type="text" [(ngModel)]="newUser.userLastName" id="userLastName" name="userLastName" required>
               </div>
             </div>
 
@@ -34,7 +34,16 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" placeholder="Prenom" type="text">
+                <input class="form-control" placeholder="Prenom" type="text" [(ngModel)]="newUser.userFirstName" id="userFirstName" name="userFirstName" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                </div>
+                <input class="form-control" placeholder="Username" type="text" [(ngModel)]="newUser.userName" id="userName" name="userName" required>
               </div>
             </div>
 
@@ -43,7 +52,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input class="form-control" placeholder="Email" type="email">
+                <input class="form-control" placeholder="Email" type="email" [(ngModel)]="newUser.userEmail" id="userEmail" name="userEmail" required>
               </div>
             </div>           
 
@@ -52,12 +61,12 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input class="form-control" placeholder="Password" type="password">
+                <input class="form-control" placeholder="Mot de passe" type="password" [(ngModel)]="newUser.userPassword" id="userPassword" name="userPassword" required>
               </div>
             </div>
 
             <div class="text-center">
-              <button type="button" class="btn btn-primary mt-4">Créer Mon Compte</button>
+              <button type="submit"  class="btn btn-primary mt-4">Créer Mon Compte</button>
             </div>
           </form>
         </div>

@@ -31,13 +31,11 @@ export class EditProjetComponent implements OnInit {
   onSubmit() {
     this.projetService.updateProjet(this.projectToEdit, this.projectToEdit.idprojet).subscribe(
       updatedProject => {
-        console.log('Project updated:', updatedProject);
         this.router.navigate(['projet'])
         const messageFromApi = "Project updated successfully ";
         this.toastr.success(messageFromApi);
       },
       (error: any) => {
-        console.error('Error updating project:', error);
         const messageFromApi = error.error.message;
         this.toastr.error(messageFromApi);
       }

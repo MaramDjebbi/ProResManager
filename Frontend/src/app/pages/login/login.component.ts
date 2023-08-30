@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   login(loginForm: NgForm){
     this.userService.login(loginForm.value).subscribe(
       (response: any) => {
-        this.userAuthService.setUserInfo(response.user.userFirstName,response.user.userLastName);
+        this.userAuthService.setUserNames(response.user.userFirstName,response.user.userLastName);
         this.userAuthService.setUserName(response.user.userName);
         this.userAuthService.setUserEmail(response.user.userEmail);
         this.userAuthService.setRole(response.user.role);

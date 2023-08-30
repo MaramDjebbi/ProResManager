@@ -27,11 +27,13 @@ export class ProjetComponent implements OnInit {
 
   
   ngOnInit(): void {
+    this.sessionService.checkActiveSession();
+    this.isActive();
+    //console.log("boolean",this.isActive());
     this.fetchProjects();
   }
 
   fetchProjects(): void {
-    
     this.projetService.getAllProjet().subscribe(
       (projects: Projet[]) => {
         this.projects = projects; 

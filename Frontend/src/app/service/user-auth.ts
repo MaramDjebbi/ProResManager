@@ -24,7 +24,14 @@ export class userAuthService {
         return this.role.roleName=="Manager";
     }
 
-    public setUserInfo(firstName: string, lastName: string){
+    public setUserInfo(userName: string, firstName: string, lastName: string, userEmail: string){
+        localStorage.setItem('firstName',firstName);
+        localStorage.setItem('lastName',lastName);
+        localStorage.setItem('username',userName);
+        localStorage.setItem('email',userEmail);
+    }
+
+    public setUserNames(firstName: string, lastName: string){
         localStorage.setItem('firstName',firstName);
         localStorage.setItem('lastName',lastName);
     }

@@ -21,8 +21,6 @@ export class UserProfileComponent implements OnInit {
     this.userLastName=this.userAuthService.getLastName();
     this.userName=this.userAuthService.getUserName();
     this.userEmail=this.userAuthService.getUserEmail();
-    console.log( this.userName, this.userFirstName , this.userLastName );
-
   }
 
   navigateToEdit(userId: String){

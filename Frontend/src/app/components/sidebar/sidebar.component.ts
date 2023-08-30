@@ -12,7 +12,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/ressource', title: 'Ressources',  icon: 'ni ni-folder-17', class: '' },
     { path: '/tables', title: 'Affectations',  icon:'ni-bullet-list-67 text-red', class: '' },
     { path: '/user-profile', title: 'Profile Utilisateur',  icon:'ni-single-02 text-yellow', class: '' },
-    { path: '/session', title: 'Session',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/session', title: 'Session',  icon:'ni-circle-08 text-pink', class: '' }
 ];
 
 

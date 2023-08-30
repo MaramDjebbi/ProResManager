@@ -24,7 +24,7 @@ export class userService {
           Authorization: `Bearer ${jwtToken}`
         });
         return headers;
-      }
+    }
 
     getAllUsers(): Observable<user[]> {
         const headers = this.createHeaders();
@@ -51,5 +51,10 @@ export class userService {
 
     public login(loginData){
         return this.httpClient.post(`${this.API_URL}/authenticate`, loginData,{headers: this.requestHeader});
+    }
+
+    public registerNewUser(user: any){
+        const url = `${this.API_URL}/user/registerNewUser`;
+        return this.httpClient.post(url , user );
     }
 }
