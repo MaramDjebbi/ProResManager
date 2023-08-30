@@ -79,6 +79,19 @@ public class SessionService implements ISession {
         }
         String[] ignorePropertiesArray = ignoreProperties.toArray(new String[0]);
         BeanUtils.copyProperties(S, existingSession, ignorePropertiesArray);
+
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDateTime dateDebut = convertToLocalDateTime(S.getDateDebutSession());
+        LocalDateTime dateFin = convertToLocalDateTime(S.getDateFinSession());
+
+        if (dateDebut.isAfter(currentDateTime) && dateFin.isAfter(currentDateTime)) {
+            S.setTypeSession(TypeSession.Scheduled);
+        } else if (dateFin.isBefore(currentDateTime)) {
+            S.setTypeSession(TypeSession.Inactive);
+        } else if (dateDebut.isBefore(currentDateTime) && dateFin.isAfter(currentDateTime)) {
+            S.setTypeSession(TypeSession.Active);
+        }
+
         sessionRepository.save(S);
         return 1;
     }
@@ -104,7 +117,7 @@ public class SessionService implements ISession {
 
     @Override
     public Optional<Session> getActiveSession(){
-        return Optional.ofNullable(sessionRepository.findByTypeSession(TypeSession.Active));
+        return sessionRepository.findByTypeSession(TypeSession.Active);
     }
 
 }

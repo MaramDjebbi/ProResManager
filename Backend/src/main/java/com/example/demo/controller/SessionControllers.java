@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 import com.example.demo.entites.ApiResponse;
+import com.example.demo.entites.Ressources;
 import com.example.demo.entites.Session;
 import com.example.demo.services.impl.SessionService;
 import lombok.SneakyThrows;
@@ -45,7 +46,7 @@ public class SessionControllers {
             return ResponseEntity.ok(optionalSession.get());
         else {
             response.setMessage("no active session");
-            return new ResponseEntity(response, HttpStatus.CONFLICT);
+            return new ResponseEntity(response, HttpStatus.OK);
         }
     }
 

@@ -87,15 +87,24 @@ public class UserService implements IUser {
 
     public Integer updateUser(String idUser, User user){
         User existingUser = userDao.findById(idUser).get();
-        List<String> attributes = getUserAttributes(User.class);
-        Set<String> ignoreProperties = new HashSet<>();
-        for (String attribute : attributes) {
-            if (user.get(attribute) == null)
-                ignoreProperties.add(attribute);
+        if(existingUser != null){
+            List<String> attributes = getUserAttributes(User.class);
+            Set<String> ignoreProperties = new HashSet<>();
+            for (String attribute : attributes) {
+                if (user.get(attribute) == null)
+                    ignoreProperties.add(attribute);
+            }
+            String[] ignorePropertiesArray = ignoreProperties.toArray(new String[0]);
+            BeanUtils.copyProperties(user, existingUser, ignorePropertiesArray);
+            if(existingUser.getRole() != null){
+                Role existingRole = roleDao.findOneByRoleName(existingUser.getRole().getRoleName()).orElse(null);
+                if (existingRole != null) {
+                    existingUser.setRole(existingRole);
+                }
+            }
+            userDao.save(existingUser);
         }
-        String[] ignorePropertiesArray = ignoreProperties.toArray(new String[0]);
-        BeanUtils.copyProperties(user, existingUser, ignorePropertiesArray);
-        userDao.save(existingUser);
+
         return 1;
     }
 
