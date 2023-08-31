@@ -29,6 +29,7 @@ export class TablesComponent implements OnInit {
 
   ngOnInit() {
     this.fetchAffectations();
+    this.fetchActiveSession();
   }
 
   fetchAffectations(): void {
@@ -39,6 +40,20 @@ export class TablesComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching affectations:', error);
+      }
+    );
+  }
+
+  fetchActiveSession(): void {
+    this.sessionService.getActiveSession().subscribe(
+      (activeSession: any) => {
+        activeSession.dateDebutSession = new Date(activeSession.dateDebutSession).toISOString().split('T')[0];
+        activeSession.dateFinSession = new Date(activeSession.dateFinSession).toISOString().split('T')[0];
+        console.log(activeSession);
+        this.activeSession = activeSession; 
+      },
+      (error) => {
+        console.error('Error fetching active session:', error);
       }
     );
   }

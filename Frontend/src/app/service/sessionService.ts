@@ -22,6 +22,7 @@ export class sessionService {
         });
        return headers;
     }
+    
 
     isActive: boolean;
 

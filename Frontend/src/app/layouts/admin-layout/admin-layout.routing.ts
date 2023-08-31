@@ -13,7 +13,7 @@ import { SessionComponent } from 'src/app/pages/session/session.component';
 import { AddSessionComponent } from 'src/app/pages/add-session/add-session.component';
 import { EditSessionComponent } from 'src/app/pages/edit-session/edit-session.component';
 import { EditUserComponent } from 'src/app/pages/edit-user-profile/edit-user.component';
-
+import { UsersListComponent } from 'src/app/pages/users-list/users-list.component';
 export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'tables',         component: TablesComponent },
@@ -28,6 +28,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'session', component: SessionComponent },
     { path: 'addsession', component: AddSessionComponent},
     { path: 'editsession/:idsession', component: EditSessionComponent},
-    { path: 'edit-user-profile/:iduser', component: EditUserComponent }
+    { path: 'edit-user-profile/:iduser', component: EditUserComponent },
+    { path: 'userslist', component: UsersListComponent }
 
 ];

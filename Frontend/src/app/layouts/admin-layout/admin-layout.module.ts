@@ -10,6 +10,9 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RessourceComponent } from 'src/app/pages/ressource/ressource.component';
 import { SessionComponent } from 'src/app/pages/session/session.component';
+
+
+
 @NgModule({
   imports: [
     CommonModule,

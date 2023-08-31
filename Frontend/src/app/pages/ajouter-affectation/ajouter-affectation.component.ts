@@ -4,6 +4,8 @@ import { natureAffectationService } from '../../service/natureAffectationService
 import { statutAffectationService } from '../../service/statutAffectationService';
 import { ToastrService } from 'ngx-toastr';
 import { AffectationService } from 'src/app/service/affectationService';
+import { sessionService } from 'src/app/service/sessionService';
+
 
 @Component({
   selector: 'app-ajouter-affectation',
@@ -19,14 +21,19 @@ export class AjouterAffectationComponent  implements OnInit {
   statutAffectations: any[] = []; 
   natureAffectations: any[] = []; 
 
+  activeSession: any;
 
-  constructor(private router: Router, private natureAffectationService: natureAffectationService, private statutAffectationService: statutAffectationService,  private toastr: ToastrService, private affectationService : AffectationService) { }
+  constructor(private router: Router, private natureAffectationService: natureAffectationService, private statutAffectationService: statutAffectationService,  private toastr: ToastrService, private affectationService : AffectationService, private sessionService: sessionService ) { }
+
+  
 
   
 
   ngOnInit() {
     this.fetchNatureAffectations();
     this.fetchStatutAffectations();
+    this.fetchActiveSession();
+    console.log(this.activeSession);
   }
 
   onSubmit() {
@@ -65,6 +72,20 @@ export class AjouterAffectationComponent  implements OnInit {
     error => {
       console.error('Error fetching staut affectations', error);
     });
+  }
+
+  fetchActiveSession(): void {
+    this.sessionService.getActiveSession().subscribe(
+      (activeSession: any) => {
+        activeSession.dateDebutSession = new Date(activeSession.dateDebutSession).toISOString().split('T')[0];
+        activeSession.dateFinSession = new Date(activeSession.dateFinSession).toISOString().split('T')[0];
+        console.log(activeSession);
+        this.activeSession = activeSession; 
+      },
+      (error) => {
+        console.error('Error fetching active session:', error);
+      }
+    );
   }
 
 }

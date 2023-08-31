@@ -13,6 +13,8 @@ import { EditAffectationComponent } from './pages/edit-affectation/edit-affectat
 import { SessionComponent } from './pages/session/session.component';
 import { EditSessionComponent } from './pages/edit-session/edit-session.component';
 import { EditUserComponent } from './pages/edit-user-profile/edit-user.component';
+import { UsersListComponent } from './pages/users-list/users-list.component';
+
 const routes: Routes = [
 
   {
@@ -57,6 +59,8 @@ const routes: Routes = [
   { path: 'editsession/:idsession', component: EditSessionComponent },
 
   { path: 'edit-user-profile/:iduser', component: EditUserComponent },
+
+  { path: 'userslist', component: UsersListComponent },
 
 
 ];

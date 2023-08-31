@@ -22,6 +22,7 @@ import { FilterPipe } from './filter.pipe';
 import { AddSessionComponent } from './pages/add-session/add-session.component';
 import { EditSessionComponent } from './pages/edit-session/edit-session.component';
 import { EditUserComponent } from './pages/edit-user-profile/edit-user.component';
+import { UsersListComponent } from './pages/users-list/users-list.component';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { EditUserComponent } from './pages/edit-user-profile/edit-user.component
     AddSessionComponent,
     EditSessionComponent,
     EditUserComponent,
+    UsersListComponent,
     
   ],
   providers: [],
