@@ -36,18 +36,24 @@
             <div class="form-row">
 
               <div class="form-group col-md-4">
-                <label for="nom">Nom Manager</label>
-                <input type="text" class="form-control" [(ngModel)]="newAffectation.nomManager" id="nommanager" name="nommanager" required>
+                <label for="region">Nom Manager</label>
+                <select class="form-control" [(ngModel)]="newAffectation.ressources" id="nommanager" name="nommanager" required>
+                  <option *ngFor="let ressource of ressources" [value]="ressource.nomManager">{{ ressource.nomManager }}</option>
+                </select>
               </div>
 
               <div class="form-group col-md-4">
-                <label for="nom">Prenom Manager</label>
-                <input type="text" class="form-control" [(ngModel)]="newAffectation.prenomManager" id="prenommanager" name="prenommanager" required>
+                <label for="region">Prenom Manager</label>
+                <select class="form-control" [(ngModel)]="newAffectation.ressources" id="prenommanager" name="prenommanager" required>
+                  <option *ngFor="let ressource of ressources" [value]="ressource.prenomManager">{{ ressource.prenomManager }}</option>
+                </select>
               </div>
 
               <div class="form-group col-md-4">
-                <label for="nom">Departement</label>
-                <input type="text" class="form-control" [(ngModel)]="newAffectation.departement" id="departement" name="departement" required>
+                <label for="region">Departement</label>
+                <select class="form-control" [(ngModel)]="newAffectation.ressources" id="departement" name="departement" required>
+                  <option *ngFor="let ressource of ressources" [value]="ressource.departement">{{ ressource.departement }}</option>
+                </select>
               </div>
 
             </div>
@@ -56,13 +62,17 @@
             <div class="form-row">
 
               <div class="form-group col-md-2">
-                <label for="nom">Country</label>
-                <input type="text" class="form-control" [(ngModel)]="newAffectation.country" id="country" name="country" required>
+                <label for="region">Country</label>
+                <select class="form-control" [(ngModel)]="newAffectation.projets" id="country" name="country" required>
+                  <option *ngFor="let projet of projets" [value]="projet.country">{{ projet.country }}</option>
+                </select>
               </div>
 
               <div class="form-group col-md-2">
-                <label for="nom">Region</label>
-                <input type="text" class="form-control" [(ngModel)]="newAffectation.region" id="region" name="region" required>
+                <label for="region">Region</label>
+                <select class="form-control" [(ngModel)]="newAffectation.projets" id="region" name="region" required>
+                  <option *ngFor="let projet of projets" [value]="projet.region">{{ projet.region }}</option>
+                </select>
               </div>
 
             </div>
@@ -70,20 +80,27 @@
 
             <div class="form-row">
 
-              <div class="form-group col-md-4">
-                <label for="nom">Nom Ressource</label>
-                <input type="text" class="form-control" [(ngModel)]="newAffectation.nomRessource" id="region" name="region" required>
+              <div class="form-group col-md-6">
+                <label for="region">Nom Ressource</label>
+                <select class="form-control" [(ngModel)]="newAffectation.ressources" id="nomressource" name="nomressource" required>
+                  <option *ngFor="let ressource of ressources" [value]="ressource.nomRessource">{{ ressource.nomRessource }}</option>
+                </select>
               </div>
 
-              <div class="form-group col-md-4">
-                <label for="nom">Prenom Ressource</label>
-                <input type="text" class="form-control" [(ngModel)]="newAffectation.prenomRessource" id="prenomRessource" name="prenomRessource" required>
+              <div class="form-group col-md-6">
+                <label for="region">Prenom Ressource</label>
+                <select class="form-control" [(ngModel)]="newAffectation.ressources" id="prenomressource" name="prenomressource" required>
+                  <option *ngFor="let ressource of ressources" [value]="ressource.prenomRessource">{{ ressource.prenomRessource }}</option>
+                </select>
               </div>
 
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-2">
                 <label for="region">Projet</label>
-                <input type="text" class="form-control" [(ngModel)]="newAffectation.projet" id="projet" name="projet" required>
+                <select class="form-control" [(ngModel)]="newAffectation.projets" id="projet" name="projet" required>
+                  <option *ngFor="let projet of projets" [value]="projet.nomProjet">{{ projet.nomprojet }}</option>
+                </select>
               </div>
+
 
             </div>
 

@@ -92,3 +92,19 @@
   .add-button {
     margin-left: 10px; /* Adjust the margin value as needed */
   }
+
+  .sub-columns {
+    display: flex;
+  }
+  
+  .sub-column {
+    flex: 1;
+    padding: 5px;
+    border-right: 1px solid #ccc; /* Add a vertical line between sub-columns */
+  }
+
+  .sub-column1 {
+    flex: 1;
+    padding: 5px;
+  }
+  

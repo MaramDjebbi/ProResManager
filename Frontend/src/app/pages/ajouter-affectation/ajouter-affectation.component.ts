@@ -5,6 +5,10 @@ import { statutAffectationService } from '../../service/statutAffectationService
 import { ToastrService } from 'ngx-toastr';
 import { AffectationService } from 'src/app/service/affectationService';
 import { sessionService } from 'src/app/service/sessionService';
+import { RessourceService } from 'src/app/service/ressourceService';
+import { ProjetService } from 'src/app/service/projetService';
+import { Projet } from 'src/models/projet';
+import { Ressource } from 'src/models/ressource';
 
 
 @Component({
@@ -20,10 +24,13 @@ export class AjouterAffectationComponent  implements OnInit {
   newAffectation: any = {};
   statutAffectations: any[] = []; 
   natureAffectations: any[] = []; 
+  ressources: any[] = [];
+  projets: any[] = [];
+
 
   activeSession: any;
 
-  constructor(private router: Router, private natureAffectationService: natureAffectationService, private statutAffectationService: statutAffectationService,  private toastr: ToastrService, private affectationService : AffectationService, private sessionService: sessionService ) { }
+  constructor(private router: Router, private natureAffectationService: natureAffectationService, private statutAffectationService: statutAffectationService,  private toastr: ToastrService, private affectationService : AffectationService, private sessionService: sessionService, private projetService: ProjetService, private ressourceService: RessourceService ) { }
 
   
 
@@ -33,7 +40,11 @@ export class AjouterAffectationComponent  implements OnInit {
     this.fetchNatureAffectations();
     this.fetchStatutAffectations();
     this.fetchActiveSession();
-    console.log(this.activeSession);
+    this.fetchProjets();
+    this.fetchRessources();
+    //console.log("proj",this.projets);
+    //console.log("ress",this.ressources);
+    //console.log("sess",this.activeSession);
   }
 
   onSubmit() {
@@ -60,10 +71,32 @@ export class AjouterAffectationComponent  implements OnInit {
     error => {
       console.error('Error fetching nature affectations', error);
     }
-    
     );
   }
-  
+
+  fetchProjets(){
+    this.projetService.getAllProjet().subscribe(
+      (projects: any[]) => {
+        //console.log("projets 1",projects);
+        this.projets = projects; 
+        //console.log("projets 2",this.projets);
+      },
+      (error) => {
+        console.error('Error fetching projects:', error);
+      }
+    );
+  }
+
+  fetchRessources(): void {
+    this.ressourceService.getAllRessources().subscribe(
+      (ressources: any[]) => {
+        this.ressources = ressources; 
+      },
+      (error) => {
+        console.error('Error fetching resources:', error);
+      }
+    );
+  }
 
   fetchStatutAffectations() {
     this.statutAffectationService.getAllStatutAffectation().subscribe((data: any[]) => {
@@ -79,7 +112,7 @@ export class AjouterAffectationComponent  implements OnInit {
       (activeSession: any) => {
         activeSession.dateDebutSession = new Date(activeSession.dateDebutSession).toISOString().split('T')[0];
         activeSession.dateFinSession = new Date(activeSession.dateFinSession).toISOString().split('T')[0];
-        console.log(activeSession);
+        //console.log(activeSession);
         this.activeSession = activeSession; 
       },
       (error) => {

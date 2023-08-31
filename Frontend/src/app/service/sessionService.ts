@@ -72,5 +72,10 @@ export class sessionService {
     }
 
 
+    deletesSession(sessionId: number){
+      const headers = this.createHeaders();
+      const url = `${this.API_URL}/deleteSession/${sessionId}`;
+      return this.httpClient.delete(url, {headers});
+    }
 
 }
