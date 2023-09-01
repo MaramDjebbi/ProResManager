@@ -14,7 +14,7 @@ A comprehensive web-based project resource management system, powered by Angular
 ` npm install `
 
 
-###For the backend:
+### For the backend:
 ` cd backend `
 ` mvn clean install `
 
