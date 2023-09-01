@@ -2,9 +2,9 @@
 A comprehensive web-based project resource management system, powered by Angular and Spring Boot, designed to streamline project planning, resource allocation, and task assignments.
 
 
-Getting Started
-1 Clone the repository
-2 Install the dependencies
+# Getting Started
+# 1 Clone the repository
+# 2 Install the dependencies
 
 For the frontend:
 cd frontend
@@ -16,7 +16,7 @@ cd backend
 mvn clean install
 
 
-Running the Project
+# Running the Project
 Start the backend server
 Start the frontend application
 
