@@ -27,17 +27,17 @@ Start the backend server
 ### Start the frontend application
 ` cd frontend `
 ` npm start `
-[The application will be available at] ( http://localhost:4200 )
+[ The application will be available at ] ( http://localhost:4200 )
 
 
 # Features
 The application includes the following features:
 
-A list of projects, resources, sessions, affectatations
-The ability to read, create, edit, and delete all the entities
-The ability to register, login and logout 
+* A list of projects, resources, sessions, affectatations
+* The ability to read, create, edit, and delete all the entities
+* The ability to register, login and logout 
 
 a newly created user will have a "Manager" role by default.
 
-there will be a default created user with an "Admin" role 
-you can log in with the admin user with the following credentials (username: admin123  password: admin@pass)
+There will be a default created user with an "Admin" role 
+You can log in with the admin user with the following credentials (username: admin123  password: admin@pass)
