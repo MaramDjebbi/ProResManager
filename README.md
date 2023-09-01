@@ -5,29 +5,29 @@ A comprehensive web-based project resource management system, powered by Angular
 # Getting Started
 
 ## 1 Clone the repository
-git clone https://github.com/MaramDjebbi/ProResManager.git
+` git clone https://github.com/MaramDjebbi/ProResManager.git `
 
 ## 2 Install the dependencies
 
-###For the frontend:
-cd frontend
-npm install
+### For the frontend:
+` cd frontend `
+` npm install `
 
 
 ###For the backend:
-cd backend
-mvn clean install
+` cd backend `
+` mvn clean install `
 
 
 ### Running the Project
 Start the backend server
-cd backend
-mvn spring-boot:run
+` cd backend `
+` mvn spring-boot:run `
 
-Start the frontend application
-cd frontend
-npm start
-The application will be available at http://localhost:4200.
+### Start the frontend application
+` cd frontend `
+` npm start `
+[The application will be available at] ( http://localhost:4200 )
 
 
 # Features
