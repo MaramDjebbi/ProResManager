@@ -10,12 +10,14 @@ A comprehensive web-based project resource management system, powered by Angular
 ## 2 Install the dependencies
 
 ### For the frontend:
-` cd frontend `
+` cd Frontend `
+
 ` npm install `
 
 
 ### For the backend:
-` cd backend `
+` cd Backend `
+
 ` mvn clean install `
 
 
