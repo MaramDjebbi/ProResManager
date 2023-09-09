@@ -24,11 +24,16 @@ A comprehensive web-based project resource management system, powered by Angular
 ### Running the Project
 Start the backend server
 ` cd backend `
+
 ` mvn spring-boot:run `
 
 ### Start the frontend application
 ` cd frontend `
-` npm start `
+
+` ng build `
+
+` ng serve `
+
 [ The application will be available at ] ( http://localhost:4200 )
 
 
